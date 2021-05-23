@@ -41,6 +41,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -87,21 +88,32 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Text layoutX="148.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Arub Hotdesk, ">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d32c2c40" height="46.0" stroke="BLACK" strokeType="INSIDE" width="640.0" />
+            <Text layoutX="153.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Arub Hotdesk, ">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Label layoutX="367.0" layoutY="14.0" text="EmployeeName">
+            <Label layoutX="372.0" layoutY="11.0" text="AdminName">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="231.0" layoutY="74.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="Make a Booking" />
-            <Button layoutX="232.0" layoutY="147.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="View table allocations" />
-            <Button layoutX="232.0" layoutY="219.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="Cancel a booking" />
-            <Button layoutX="232.0" layoutY="295.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="Account settings" />
-            <Separator layoutX="138.0" layoutY="42.0" prefHeight="4.0" prefWidth="365.0" />
+            <Button layoutX="81.0" layoutY="84.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="152.0" text="Generate admin report" />
+            <Button layoutX="81.0" layoutY="172.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="152.0" text="Manage bookings" />
+            <Button layoutX="81.0" layoutY="259.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="152.0" text="Manage bookings" />
+            <Button layoutX="386.0" layoutY="172.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="152.0" text="Manage employees" />
+            <Button layoutX="386.0" layoutY="84.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="152.0" text="Manage admin accounts" />
+            <Button layoutX="386.0" layoutY="259.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="152.0" text="Seat Lockdown" />
+            <Separator layoutX="317.0" layoutY="53.0" orientation="VERTICAL" prefHeight="306.0" prefWidth="0.0" />
+            <Separator layoutX="57.0" layoutY="242.0" prefWidth="200.0" />
+            <Separator layoutX="362.0" layoutY="240.0" prefWidth="200.0" />
+            <Separator layoutX="57.0" layoutY="149.0" prefWidth="200.0" />
+            <Separator layoutX="362.0" layoutY="147.0" prefWidth="200.0" />
+            <Separator layoutX="362.0" layoutY="320.0" prefWidth="200.0" />
+            <Separator layoutX="57.0" layoutY="321.0" prefWidth="200.0" />
+            <Separator layoutX="57.0" layoutY="66.0" prefWidth="200.0" />
+            <Separator layoutX="362.0" layoutY="65.0" prefWidth="200.0" />
       </children>
     </AnchorPane>
   </children>
