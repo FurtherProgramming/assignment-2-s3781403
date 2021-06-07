@@ -35,9 +35,10 @@ public class RegistrationModel {
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        System.out.println("got here");
+        String query = "INSERT INTO Employees(id, firstname, surname, username, password, role, secretquestion, secretquestionanswer, previousseat) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        String query = "INSERT INTO employee(id, firstname, surname, username, password, role, secretquestion, secretquestionanswer, previousseat) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL)";
-
+        System.out.println("got here");
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, employeeID);
@@ -48,29 +49,35 @@ public class RegistrationModel {
             preparedStatement.setString(6, role);           //TODO change role to be dynamic
             preparedStatement.setString(7, secQuestion);
             preparedStatement.setString(8, secAnswer);
+            preparedStatement.setInt(9, 0);
+            System.out.println("now here");
 
             resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
+            System.out.println("hello");
 
-                return true;
-            } else {
-                return false;
-            }
+//            if (resultSet.next()) {
+//                System.out.println("now here");
+//                return true;
+//            } else {
+//                System.out.println("fa here");
+//                return false;
+//            }
         }
         catch (Exception e)
         {
             return false;
-//        } finally {
-////            resultSet.close();
-////            preparedStatement.close();
-//            connection.close();
-//        }
+        } finally {
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        }
 
-
+        return true;
     }
 
 
 
 
 }
+
