@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="539.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="502.0" prefWidth="748.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Group layoutX="14.0" layoutY="170.0">
+               <children>
+                  <Group layoutY="27.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d73b" height="230.0" stroke="BLACK" strokeType="INSIDE" width="504.0" />
+                        <Button layoutX="22.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 1" />
+                        <Button layoutX="106.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 2" />
+                        <Button layoutX="265.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 3" />
+                        <Button layoutX="338.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 4" />
+                        <Button layoutX="22.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 6" />
+                        <Button layoutX="22.0" layoutY="89.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 8" />
+                        <Button layoutX="22.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 10" />
+                        <Button layoutX="22.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 14" />
+                        <Button layoutX="338.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 18" />
+                        <Button layoutX="265.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 17" />
+                        <Button layoutX="188.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 10" />
+                        <Button layoutX="106.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 15" />
+                        <Button layoutX="188.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 16" />
+                        <Button layoutX="22.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 11" />
+                        <Button layoutX="424.0" layoutY="15.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 5" />
+                        <Button layoutX="424.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 7" />
+                        <Button layoutX="424.0" layoutY="89.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 9" />
+                        <Button layoutX="424.0" layoutY="126.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 11" />
+                        <Button layoutX="424.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 19" />
+                        <Button layoutX="424.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 13" />
+                     </children>
+                  </Group>
+                  <Text layoutX="115.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clicking this will make any selected seat unavailable for the date" underline="true">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Group>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fc7d7d96" height="41.0" layoutX="166.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="395.0" />
+            <Text layoutX="301.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lockdown Seats">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Group layoutX="544.0" layoutY="168.0">
+               <children>
+                  <Text layoutX="1.0" layoutY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a lockdown reason from the list below" textAlignment="CENTER" wrappingWidth="161.0" />
+                  <MenuButton layoutX="1.0" layoutY="256.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="161.0" text="Select Lockdown Type" textAlignment="CENTER">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Normal Booking" />
+                      <MenuItem mnemonicParsing="false" text="COVID condition" />
+                        <MenuItem mnemonicParsing="false" text="COVID Lockdown" />
+                    </items>
+                  </MenuButton>
+                  <Button id="lockdown-confirm-button" layoutX="24.0" layoutY="296.0" mnemonicParsing="false" style="-fx-background-color: limegreen;" text="Confirm Lockdown" />
+                  <Separator layoutX="1.0" layoutY="244.0" prefHeight="2.0" prefWidth="161.0" />
+                  <Group layoutX="24.0" layoutY="84.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ceb6eb21" height="201.0" layoutX="-11.0" layoutY="-53.0" stroke="BLACK" strokeType="INSIDE" width="136.0" />
+                        <Text layoutX="3.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COVID Condition" underline="true" wrappingWidth="116.0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="2.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COVID lockdown" underline="true" wrappingWidth="110.0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="13.0" layoutY="75.0283203125" strokeType="OUTSIDE" strokeWidth="0.0" text="One seat space between desks" wrappingWidth="92.87109375" />
+                        <Text layoutX="34.0" layoutY="1.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Normal" underline="true" wrappingWidth="46.0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="11.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All seats available" />
+                        <Text layoutY="137.0283203125" strokeType="OUTSIDE" strokeWidth="0.0" text="All seats unavailable" />
+                        <Text fill="#1a4382" layoutX="43.0" layoutY="-24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key" underline="true">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Group>
+               </children>
+            </Group>
+            <Separator layoutX="531.0" layoutY="139.0" orientation="VERTICAL" prefHeight="359.0" prefWidth="6.0" />
+            <Button layoutX="29.0" layoutY="16.0" mnemonicParsing="false" text="Return to home" />
+            <DatePicker layoutX="277.0" layoutY="90.0" promptText="Select lockdown date" showWeekNumbers="true" />
+            <Separator layoutX="13.0" layoutY="131.0" prefHeight="3.0" prefWidth="703.0" />
+            <Text layoutX="243.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Option 1" underline="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="599.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Option 2" underline="true">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="199.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select lockdown date, and then choose one option from below" />
+            <Button layoutX="187.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="183.0" text="Confirm Lockdown Selections" />
+            <Text layoutX="175.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manually select seats to lockdown here" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
