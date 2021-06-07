@@ -4,15 +4,14 @@ import main.SQLConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class RegistrationModel {
 
     Connection connection;
 
-    public RegistrationModel(){
-        connection= SQLConnection.connect();
+    public RegistrationModel() {
+        connection = SQLConnection.connect();
         if (connection == null)
             System.exit(1);
     }
@@ -22,23 +21,15 @@ public class RegistrationModel {
     public Boolean isDbConnected() {
         try {
             return !connection.isClosed();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
     public Boolean registration(int employeeID, String firstName, String lastName, String username, String password, String role, String secQuestion, String secAnswer) throws SQLException {
-
-//        SQLConnection connect = new SQLConnection();
-//        Connection connection = connect.connect();
-
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        System.out.println("got here");
-        String query = "INSERT INTO Employees(id, firstname, surname, username, password, role, secretquestion, secretquestionanswer, previousseat) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Employees(id, firstname, surname, username, password, role, secretquestion, secretquestionanswer) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
-        System.out.println("got here");
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, employeeID);
@@ -46,37 +37,21 @@ public class RegistrationModel {
             preparedStatement.setString(3, lastName);
             preparedStatement.setString(4, username);
             preparedStatement.setString(5, password);
-            preparedStatement.setString(6, role);           //TODO change role to be dynamic
+            preparedStatement.setString(6, role);
             preparedStatement.setString(7, secQuestion);
             preparedStatement.setString(8, secAnswer);
-            preparedStatement.setInt(9, 0);
-            System.out.println("now here");
+            //Change previous seat sat to be dynamic
+            preparedStatement.executeUpdate();
 
-            resultSet = preparedStatement.executeQuery();
-
-            System.out.println("hello");
-
-//            if (resultSet.next()) {
-//                System.out.println("now here");
-//                return true;
-//            } else {
-//                System.out.println("fa here");
-//                return false;
-//            }
-        }
-        catch (Exception e)
-        {
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
             return false;
         } finally {
-            resultSet.close();
-            preparedStatement.close();
+//            preparedStatement.close();    // This could be uncommented once the rego page redirects to login
             connection.close();
         }
-
         return true;
     }
-
-
 
 
 }
