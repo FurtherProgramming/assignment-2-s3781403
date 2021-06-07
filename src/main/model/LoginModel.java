@@ -1,6 +1,6 @@
-package main;
+package main.model;
 
-import org.sqlite.SQLiteConnection;
+import main.SQLConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
