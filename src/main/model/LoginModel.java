@@ -1,4 +1,6 @@
-package main;
+package main.model;
+
+import main.SQLConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
