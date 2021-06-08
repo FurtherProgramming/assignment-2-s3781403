@@ -11,19 +11,17 @@ public class LoginModel {
 
     Connection connection;
 
-    public LoginModel(){
-
+    public LoginModel() {
         connection = SQLConnection.connect();
         if (connection == null)
             System.exit(1);
 
     }
 
-    public Boolean isDbConnected(){
+    public Boolean isDbConnected() {
         try {
             return !connection.isClosed();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -35,7 +33,7 @@ public class LoginModel {
     //See whether
     public Boolean isLogin(String user, String pass) throws SQLException {
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet=null;
+        ResultSet resultSet = null;
         String query = "select * from Employees where username = ? and password= ?";
         try {
 
@@ -46,20 +44,35 @@ public class LoginModel {
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return false;
-        }finally {
-           preparedStatement.close();
-           resultSet.close();
-           connection.close();
+        } finally {
+//            preparedStatement.close();  //Definitely causes errors
+//            resultSet.close();
+//            connection.close();
         }
 
     }
 
+    public String checkUserRole(String username) throws SQLException {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT * FROM Employees WHERE username = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            resultSet = preparedStatement.executeQuery();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(resultSet.getString("role"));
+        return resultSet.getString("role");
+    }
 }

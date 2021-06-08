@@ -72,6 +72,7 @@ public class RegistrationController implements Initializable {
     }
 
     //Incomplete, just checking out what works.
+    //Use lambdas calling multiple
     private boolean checkRegistrationInputs() {
         if (txtEmployeeID.getText().isEmpty()
                 || txtFirstName.getText().isEmpty()
@@ -114,15 +115,6 @@ public class RegistrationController implements Initializable {
         sqlUsername = txtUsername.getText();
         sqlPreviousSeat = 10;
 
-//        sqlEmployeeID = Integer.parseInt(txtEmployeeID.getText());
-//        sqlFirstName = "'" + txtFirstName.getText() + "'";
-//        sqlLastname = "'" + txtLastname.getText() + "'";
-//        sqlSecQuestion = "'" + txtSecQuestion.getText() + "'";
-//        sqlSecAnswer = "'" + txtSecAnswer.getText() + "'";
-//        sqlPassword = "'" + txtFirstPassword.getText() + "'"; //Only need one password, they're both the same. Should encrypt them in some way.
-//        sqlStaffRole = "'" + staffRole.getText() + "'";
-//        sqlUsername = "'" + txtUsername.getText() + "'";
-//        sqlPreviousSeat = 10;
     }
 
     private boolean checkPassword() {

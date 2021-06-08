@@ -73,7 +73,7 @@
             <TextField fx:id="txtSecQuestion" layoutX="418.0" layoutY="82.0" prefHeight="38.0" prefWidth="197.0" />
             <TextField fx:id="txtSecAnswer" layoutX="418.0" layoutY="130.0" prefHeight="38.0" prefWidth="197.0" />
             <Separator layoutX="214.0" layoutY="43.0" prefWidth="200.0" />
-            <RadioButton fx:id="staffRole" layoutX="92.0" layoutY="140.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="66.0" text="Staff " />
+            <RadioButton fx:id="staffRole" layoutX="92.0" layoutY="140.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="66.0" text="staff " />
             <Label fx:id="dbStatus" layoutX="15.0" layoutY="369.0" prefHeight="17.0" prefWidth="209.0" text="Database Status" />
             <Label fx:id="incorrectInputs" layoutX="237.0" layoutY="49.0" prefHeight="25.0" prefWidth="167.0" text="Please fill all boxes correctly!" textFill="#ff1212" visible="false" />
       </children>
