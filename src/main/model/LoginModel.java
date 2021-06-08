@@ -72,7 +72,6 @@ public class LoginModel {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(resultSet.getString("role"));
         return resultSet.getString("role");
     }
 }

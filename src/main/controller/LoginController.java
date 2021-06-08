@@ -60,13 +60,9 @@ public class LoginController implements Initializable {
         String staffType = loginModel.checkUserRole(username);
 
         if (staffType.equals("admin")) {
-
             SceneController.drawScene("ui/admin/admin_landingpage.fxml");
-
         } else if (staffType.equals("staff")) {
-
             SceneController.drawScene("ui/staff/landingpage.fxml");
-
         } else {
             isConnected.setText("User has no role");
         }
