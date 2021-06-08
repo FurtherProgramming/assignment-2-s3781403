@@ -32,56 +32,21 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f8525296" height="41.0" layoutX="110.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="395.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f754544d" height="41.0" layoutX="110.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="395.0" />
             <Text layoutX="192.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manage employee bookings">
                <font>
                   <Font size="18.0" />
@@ -90,12 +55,6 @@
             <Group layoutX="184.0" layoutY="89.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="259.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="247.0" />
-                  <SplitMenuButton layoutX="56.0" layoutY="22.0" mnemonicParsing="false" text="Choose employee">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </SplitMenuButton>
                   <Separator layoutX="24.0" layoutY="53.0" prefWidth="200.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#43ff2640" height="41.0" layoutX="30.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" width="187.0" />
                   <Label id="[booking_date]" layoutX="84.0" layoutY="79.0" text="[booking_date]" />
@@ -104,10 +63,13 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="41.0" layoutX="30.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
                   <Text layoutX="57.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seat: " />
                   <Button defaultButton="true" layoutX="57.0" layoutY="186.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Confirm Booking" />
-                  <Button cancelButton="true" layoutX="72.0" layoutY="225.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Cancel Booking" />
+                  <Button cancelButton="true" layoutX="72.0" layoutY="225.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Reject Booking" />
+                  <Label layoutX="122.0" layoutY="27.0" prefHeight="20.0" prefWidth="94.0" text="Employee Name" />
+                  <Label layoutX="32.0" layoutY="27.0" prefHeight="20.0" prefWidth="76.0" text="Employee ID" />
+                  <Separator layoutX="114.0" layoutY="26.0" orientation="VERTICAL" prefHeight="22.0" prefWidth="6.0" />
                </children>
             </Group>
-            <Text layoutX="68.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select an employee with a booking from the dropdown menu, then confirm or reject their booking">
+            <Text layoutX="109.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accept / decline employee bookings, click the next arrow to skip an employee">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>

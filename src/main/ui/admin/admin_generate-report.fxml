@@ -32,83 +32,50 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fc7d7d40" height="46.0" layoutX="130.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="381.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="33.0" layoutX="340.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="155.0" />
-            <Text layoutX="257.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generate report">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fc7d7d40" height="46.0" layoutX="130.0" layoutY="30.0" stroke="BLACK" strokeType="INSIDE" width="381.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="33.0" layoutX="335.0" layoutY="259.0" stroke="BLACK" strokeType="INSIDE" width="155.0" />
+            <Text layoutX="257.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generate report">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button layoutX="143.0" layoutY="116.0" mnemonicParsing="false" text="Booking information" />
-            <Button layoutX="339.0" layoutY="116.0" mnemonicParsing="false" text="Generate employee report" />
-            <Text layoutX="139.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which report type would you like to generate?">
+            <Button layoutX="335.0" layoutY="202.0" mnemonicParsing="false" text="Generate employee report" />
+            <Text layoutX="137.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Which report type would you like to generate?">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Separator layoutX="96.0" layoutY="152.0" prefHeight="4.0" prefWidth="415.0" />
-            <Separator layoutX="317.0" layoutY="98.0" orientation="VERTICAL" prefHeight="204.0" prefWidth="3.0" />
-            <Label layoutX="355.0" layoutY="210.0" text="Employee Report Status" />
-            <DatePicker layoutX="119.0" layoutY="178.0" />
-            <Text layoutX="119.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose date to generate report for">
+            <Separator layoutX="94.0" layoutY="185.0" prefHeight="4.0" prefWidth="415.0" />
+            <Separator layoutX="315.0" layoutY="116.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="6.0" style="-fx-background-color: #sssf;" />
+            <Label layoutX="341.0" layoutY="267.0" prefHeight="17.0" prefWidth="143.0" text="Employee Report Status" />
+            <DatePicker layoutX="119.0" layoutY="223.0" />
+            <Text layoutX="117.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose date to generate report for">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font></Text>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="25.0" layoutX="127.0" layoutY="263.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-            <Label layoutX="134.0" layoutY="268.0" text="Booking report gen status" />
-            <Button layoutX="26.0" layoutY="25.0" mnemonicParsing="false" text="Return Home" />
-            <Separator layoutX="92.0" layoutY="92.0" orientation="VERTICAL" prefHeight="215.0" prefWidth="6.0" />
-            <Separator layoutX="508.0" layoutY="95.0" orientation="VERTICAL" prefHeight="215.0" prefWidth="6.0" />
-            <Label layoutX="249.0" layoutY="332.0" text="Report generation location" />
-            <Button layoutX="127.0" layoutY="218.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="155.0" text="Generate" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eeeeee" height="25.0" layoutX="125.0" layoutY="303.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+            <Label layoutX="131.0" layoutY="308.0" prefHeight="17.0" prefWidth="143.0" text="Booking report status" />
+            <Button layoutX="24.0" layoutY="41.0" mnemonicParsing="false" text="Return Home" />
+            <Label layoutX="249.0" layoutY="350.0" text="Report generation location" visible="false" />
+            <Button layoutX="126.0" layoutY="259.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="155.0" text="Generate" />
+            <Text layoutX="131.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generate a booking report for a specific date below" textAlignment="CENTER" wrappingWidth="143.0" />
+            <Text layoutX="341.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generate a report of all employees below" textAlignment="CENTER" wrappingWidth="143.0" />
+            <Separator layoutX="88.0" layoutY="116.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="6.0" style="-fx-background-color: #sssf;" />
+            <Separator layoutX="511.0" layoutY="114.0" orientation="VERTICAL" prefHeight="269.0" prefWidth="6.0" style="-fx-background-color: #sssf;" />
       </children>
     </AnchorPane>
   </children>
