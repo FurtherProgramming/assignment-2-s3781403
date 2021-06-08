@@ -47,8 +47,10 @@ public class RegistrationModel {
             System.out.println(e.getMessage());
             return false;
         } finally {
+
+            //TODO This stuff should only happen if you correctly put things in the inputs.
 //            preparedStatement.close();    // This could be uncommented once the rego page redirects to login
-            connection.close();
+//            connection.close();
         }
         return true;
     }

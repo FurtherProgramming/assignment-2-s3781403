@@ -3,11 +3,13 @@ package main.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import main.model.RegistrationModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -30,6 +32,8 @@ public class RegistrationController implements Initializable {
     private RadioButton staffRole;
     @FXML
     private Label incorrectInputs;
+    @FXML
+    private Button btnGoLoginPage, btnCancel, registerButton;
 
     //Variables to be manipulated and then passed into SQL statements
     private int sqlEmployeeID, sqlPreviousSeat;
@@ -60,6 +64,9 @@ public class RegistrationController implements Initializable {
                 if (registrationModel.registration(sqlEmployeeID, sqlFirstName, sqlLastname, sqlUsername, sqlPassword, sqlStaffRole, sqlSecQuestion, sqlSecAnswer)) {
                     dbStatus.setStyle("-fx-text-fill: green; -fx-font-size: 16px;");  //These should be changed to be hidden labels in better positions
                     dbStatus.setText("New account created");
+                    btnGoLoginPage.setVisible(true);
+                    btnCancel.setDisable(true);
+                    registerButton.setDisable(true);
                 } else {
                     dbStatus.setStyle("-fx-text-fill: red; -fx-font-size: 16px;");
                     dbStatus.setText("Failed to create an account");
@@ -138,4 +145,12 @@ public class RegistrationController implements Initializable {
     }
 
 
+    //Is it better to have try catch, or throws IOException?
+    public void goLoginPage(ActionEvent actionEvent) {
+        try {
+            SceneController.drawScene("ui/login.fxml");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
