@@ -43,42 +43,42 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <Ellipse fill="#5eb0f8" layoutX="320.0" layoutY="335.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
             <Ellipse fill="#d9dada" layoutX="247.0" layoutY="335.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
             <Ellipse fill="#d9dada" layoutX="393.0" layoutY="335.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
-            <Text layoutX="233.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new booking">
+            <Text layoutX="233.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new booking">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="25.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a seat for your booking on: " />
+            <Text layoutX="17.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click a seat to select it" />
             <Group layoutX="17.0" layoutY="69.0">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d73b" height="230.0" stroke="BLACK" strokeType="INSIDE" width="504.0" />
-                  <Button layoutX="28.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 1" />
-                  <Button layoutX="106.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 2" />
-                  <Button layoutX="263.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 3" />
-                  <Button layoutX="336.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 4" />
-                  <Button layoutX="28.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 6" />
-                  <Button layoutX="28.0" layoutY="91.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 8" />
-                  <Button layoutX="28.0" layoutY="122.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 10" />
-                  <Button layoutX="28.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 14" />
-                  <Button layoutX="336.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 18" />
-                  <Button layoutX="263.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 17" />
-                  <Button layoutX="186.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 10" />
-                  <Button layoutX="106.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 15" />
-                  <Button layoutX="186.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 16" />
-                  <Button layoutX="28.0" layoutY="153.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 11" />
-                  <Button layoutX="422.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 5" />
-                  <Button layoutX="422.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 7" />
-                  <Button layoutX="422.0" layoutY="91.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 9" />
-                  <Button layoutX="422.0" layoutY="122.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 11" />
-                  <Button layoutX="422.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 19" />
-                  <Button layoutX="422.0" layoutY="153.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 13" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d73b" height="230.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="504.0" />
+                  <Button fx:id="seat1" layoutX="28.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 1" />
+                  <Button fx:id="seat2" layoutX="106.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 2" />
+                  <Button fx:id="seat4" layoutX="263.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 4" />
+                  <Button fx:id="seat5" layoutX="336.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 5" />
+                  <Button fx:id="seat7" layoutX="28.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 7" />
+                  <Button fx:id="seat9" layoutX="28.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 9" />
+                  <Button fx:id="seat11" layoutX="28.0" layoutY="129.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 11" />
+                  <Button fx:id="seat15" layoutX="28.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 15" />
+                  <Button fx:id="seat19" layoutX="336.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 19" />
+                  <Button fx:id="seat18" layoutX="263.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 18" />
+                  <Button fx:id="seat3" layoutX="186.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 3" />
+                  <Button fx:id="seat16" layoutX="106.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 16" />
+                  <Button fx:id="seat17" layoutX="186.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 17" />
+                  <Button fx:id="seat13" layoutX="28.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 13" />
+                  <Button fx:id="seat6" layoutX="422.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 6" />
+                  <Button fx:id="seat8" layoutX="422.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 8" />
+                  <Button fx:id="seat10" layoutX="422.0" layoutY="98.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 10" />
+                  <Button fx:id="seat12" layoutX="422.0" layoutY="129.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 12" />
+                  <Button fx:id="seat20" layoutX="422.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 20" />
+                  <Button fx:id="seat14" layoutX="422.0" layoutY="160.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 14" />
                </children>
             </Group>
             <Text layoutX="567.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key">
@@ -93,10 +93,13 @@
             <Text layoutX="559.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="= Available" />
             <Text layoutX="559.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="= COVID Locked" wrappingWidth="59.244140625" />
             <Text layoutX="556.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="= Unavailable" wrappingWidth="76.0" />
-            <Button defaultButton="true" layoutX="521.0" layoutY="323.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Next Step" />
-            <Button cancelButton="true" layoutX="45.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Cancel" />
-            <Separator layoutX="233.0" layoutY="43.0" prefHeight="3.0" prefWidth="174.0" />
-            <Label layoutX="207.0" layoutY="47.0" text="booking date" />
+            <Button fx:id="btnNext2" defaultButton="true" layoutX="521.0" layoutY="323.0" mnemonicParsing="false" onAction="#goBookingThree" prefHeight="25.0" prefWidth="76.0" text="Next Step" />
+            <Button fx:id="btnCancel2" cancelButton="true" layoutX="46.0" layoutY="323.0" mnemonicParsing="false" onAction="#goLandingPage" prefHeight="25.0" prefWidth="76.0" text="Cancel" />
+            <Separator layoutX="233.0" layoutY="36.0" prefHeight="3.0" prefWidth="174.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#badeffed" height="21.0" layoutX="250.0" layoutY="49.0" stroke="BLACK" strokeType="INSIDE" width="101.0" />
+            <Label layoutX="254.0" layoutY="51.0" prefHeight="17.0" prefWidth="101.0" text="booking date" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0065fa66" height="19.0" layoutX="528.0" layoutY="257.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Text layoutX="559.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="= Your seat" wrappingWidth="76.0" />
       </children>
     </AnchorPane>
   </children>

@@ -42,7 +42,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -52,19 +52,24 @@
                </font>
             </Text>
             <DatePicker layoutX="219.0" layoutY="121.0" />
-            <Button layoutX="407.0" layoutY="121.0" mnemonicParsing="false" text="Check availability" />
+            <Button fx:id="checkAvailable" layoutX="407.0" layoutY="121.0" mnemonicParsing="false" onAction="#checkBookingDate" text="Check availability" />
             <Text layoutX="91.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Booking Date:">
                <font>
                   <Font size="14.0" />
                </font></Text>
             <Separator layoutX="38.0" layoutY="200.0" prefHeight="0.0" prefWidth="564.0" />
-            <Button defaultButton="true" layoutX="477.0" layoutY="273.0" mnemonicParsing="false" text="Next Step" />
-            <Button cancelButton="true" layoutX="91.0" layoutY="273.0" mnemonicParsing="false" text="Cancel" />
+            <Button fx:id="btnNextStep" defaultButton="true" layoutX="504.0" layoutY="311.0" mnemonicParsing="false" onAction="#goBookingTwo" prefHeight="35.0" prefWidth="80.0" text="Next Step" />
+            <Button fx:id="btnCancel" cancelButton="true" layoutX="55.0" layoutY="316.0" mnemonicParsing="false" onAction="#goLandingPage" prefHeight="25.0" prefWidth="73.0" text="Cancel" />
             <Ellipse fill="#5eb0f8" layoutX="247.0" layoutY="347.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
             <Ellipse fill="#d9dada" layoutX="320.0" layoutY="347.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
             <Ellipse fill="#d9dada" layoutX="393.0" layoutY="347.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label layoutX="494.0" layoutY="125.0" text="Availability" visible="false" />
+            <Label layoutX="408.0" layoutY="154.0" prefHeight="17.0" prefWidth="107.0" text="Availability" visible="false" />
             <Separator layoutX="220.0" layoutY="57.0" prefWidth="200.0" />
+            <Label layoutX="431.0" layoutY="245.0" text="Please complete all steps first" textFill="RED" visible="false">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
          </children>
     </AnchorPane>
   </children>
