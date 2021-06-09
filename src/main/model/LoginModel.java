@@ -15,7 +15,6 @@ public class LoginModel {
         connection = SQLConnection.connect();
         if (connection == null)
             System.exit(1);
-
     }
 
     public Boolean isDbConnected() {
@@ -57,21 +56,5 @@ public class LoginModel {
 
     }
 
-    public String checkUserRole(String username) throws SQLException {
 
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        String query = "SELECT * FROM Employees WHERE username = ?";
-
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, username);
-
-            resultSet = preparedStatement.executeQuery();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return resultSet.getString("role");
-    }
 }

@@ -10,8 +10,10 @@ public class Main extends Application {
 
     //Declare variables so controller can change scenes
     private static Parent root;
-    private static Stage primaryStage; //Better variable name
-    private static String title; //TODO Use this later ?
+    private static Stage primaryStage;
+    private static String title; //TODO decide if this is necessary
+
+    private static String currentUser; ///This is the username of the employee who is logged in.
 
 
     @Override
@@ -53,6 +55,17 @@ public class Main extends Application {
     public static void setTitle(String title) {
         Main.title = title;
     }
+
+    public static String getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(String currentUser) {
+        Main.currentUser = currentUser;
+        System.out.println(Main.currentUser);
+    }
+
+
 
 
 }
