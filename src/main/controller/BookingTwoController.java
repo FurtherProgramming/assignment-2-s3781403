@@ -16,8 +16,8 @@ import java.util.ResourceBundle;
 
 public class BookingTwoController implements Initializable {
 
+    private static String seatNum;
     public BookingModel bookingModel = new BookingModel();
-
     @FXML
     private Button seat1, seat2, seat4, seat5, seat7, seat9, seat11, seat15, seat19, seat18, seat3, seat16, seat17, seat13, seat6, seat8, seat10, seat12, seat20, seat14;
     @FXML
@@ -27,8 +27,9 @@ public class BookingTwoController implements Initializable {
     @FXML
     private Label bookDateDisplay;
 
-    private static String seatNum;
-
+    public static String getSeatNum() {
+        return seatNum;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,10 +61,6 @@ public class BookingTwoController implements Initializable {
 
             }
         }
-    }
-
-    public static String getSeatNum() {
-        return seatNum;
     }
 
 }

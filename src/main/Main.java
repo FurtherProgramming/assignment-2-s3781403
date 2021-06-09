@@ -15,21 +15,9 @@ public class Main extends Application {
 
     private static String currentUser; ///This is the username of the employee who is logged in.
 
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        root = FXMLLoader.load(getClass().getResource("ui/login.fxml"));
-        Main.primaryStage = primaryStage;
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Arub Seat Management");
-        primaryStage.show();
-    }
-
     public static void main(String[] args) {
         launch(args);
     }
-
 
     //Getters/Setters for scene drawing
     public static Parent getRoot() {
@@ -65,7 +53,15 @@ public class Main extends Application {
         System.out.println(Main.currentUser);
     }
 
-
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        root = FXMLLoader.load(getClass().getResource("ui/login.fxml"));
+        Main.primaryStage = primaryStage;
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Arub Seat Management");
+        primaryStage.show();
+    }
 
 
 }
