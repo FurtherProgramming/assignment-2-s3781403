@@ -4,7 +4,9 @@ import main.SQLConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class BookingModel {
@@ -26,12 +28,12 @@ public class BookingModel {
     public void addBooking(String currentUser, String seatNum, String bookingDateString) throws SQLException {
         System.out.println(seatNum);
         PreparedStatement preparedStatement = null;
-        String query = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
+        String update = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
 
         int userID = getUserID(currentUser);
 
         try {
-            preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, bookingDateString);
             preparedStatement.setString(2, seatNum);
             preparedStatement.setInt(3, userID);
@@ -62,4 +64,41 @@ public class BookingModel {
 
     }
 
+    public ArrayList<String> selectLockdownSeats(String bookedDate) {
+        ArrayList<String> lockedSeats = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'covid'";
+
+        try {
+
+
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+
+        } finally {
+
+        }
+        
+    }
+
+    public ArrayList<String> selectBookedSeats(String bookedDate) {
+        ArrayList<String> bookedSeats = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'booked'";
+
+        try {
+            preparedStatement.setString(1, bookedDate);
+            resultSet = preparedStatement.executeQuery();
+            
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
 }

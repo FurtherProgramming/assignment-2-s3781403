@@ -27,14 +27,17 @@ public class BookingTwoController implements Initializable {
     @FXML
     private Label bookDateDisplay;
 
+    private String bookingDate;
+
     public static String getSeatNum() {
         return seatNum;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        bookingDate = BookingController.getTempBookingDateString();
         seatsArray.addAll(Arrays.asList(seat1, seat2, seat4, seat5, seat7, seat9, seat11, seat15, seat19, seat18, seat3, seat16, seat17, seat13, seat6, seat8, seat10, seat12, seat20, seat14));
-        bookDateDisplay.setText(BookingController.getTempBookingDateString());
+        bookDateDisplay.setText(bookingDate);
         colourBookedSeats();
         colourLockdownSeats();
 
@@ -42,7 +45,7 @@ public class BookingTwoController implements Initializable {
 
     private void colourLockdownSeats() {
 
-        if(bookingModel.selectLockdownSeats() != null) {
+        if(bookingModel.selectLockdownSeats(bookingDate) != null) {
             //for loop that matches each returned seat to their respective array thing
         }
 
@@ -52,7 +55,7 @@ public class BookingTwoController implements Initializable {
     //
     private void colourBookedSeats() {
 
-        if(bookingModel.selectBookedSeats() != null) {
+        if(bookingModel.selectBookedSeats(bookingDate) != null) {
             //similar for loop to lockdown, with different colour.
         }
 
