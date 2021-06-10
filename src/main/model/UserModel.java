@@ -12,6 +12,8 @@ public class UserModel {
     Connection connection; //Couldn't make this work without it being static
 
     private static final String employeeIDByUser = "SELECT id FROM Employees WHERE username = ?";
+    private String role;
+
 
     public UserModel() {
         connection = SQLConnection.connect();
@@ -24,19 +26,25 @@ public class UserModel {
     public int getEmployeeID(String currentUser) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        int employeeID = 0;
 
         try {
             preparedStatement = connection.prepareStatement(employeeIDByUser);
             preparedStatement.setString(1,currentUser);
 
             resultSet = preparedStatement.executeQuery();
+            employeeID = resultSet.getInt("id");
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
         }
-        System.out.println(resultSet.getInt("id"));
+        System.out.println("User ID:" + employeeID);
 
-        return resultSet.getInt("id");
+        return employeeID;
 
 
     }
@@ -52,11 +60,17 @@ public class UserModel {
             preparedStatement.setString(1, username);
 
             resultSet = preparedStatement.executeQuery();
+            role = resultSet.getString("role");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
         }
-        return resultSet.getString("role");
+        return role;
+
     }
 
 

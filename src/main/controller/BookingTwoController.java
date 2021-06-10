@@ -35,6 +35,27 @@ public class BookingTwoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         seatsArray.addAll(Arrays.asList(seat1, seat2, seat4, seat5, seat7, seat9, seat11, seat15, seat19, seat18, seat3, seat16, seat17, seat13, seat6, seat8, seat10, seat12, seat20, seat14));
         bookDateDisplay.setText(BookingController.getTempBookingDateString());
+        colourBookedSeats();
+        colourLockdownSeats();
+
+    }
+
+    private void colourLockdownSeats() {
+
+        if(bookingModel.selectLockdownSeats() != null) {
+            //for loop that matches each returned seat to their respective array thing
+        }
+
+
+    }
+
+    //
+    private void colourBookedSeats() {
+
+        if(bookingModel.selectBookedSeats() != null) {
+            //similar for loop to lockdown, with different colour.
+        }
+
     }
 
     //Checks if the user has chosen a button

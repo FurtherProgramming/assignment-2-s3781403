@@ -10,6 +10,7 @@ import main.model.BookingModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class BookingThreeController implements Initializable {
@@ -33,7 +34,9 @@ public class BookingThreeController implements Initializable {
 
     //Creates booking using gathered information
 
-    public void createBooking(ActionEvent actionEvent) {
+    public void createBooking(ActionEvent actionEvent) throws SQLException {
+
+        System.out.println("User: " +  Main.getCurrentUser() + "\nSeat: " + BookingTwoController.getSeatNum() + "\nDate: " + BookingController.getTempBookingDateString());
 
         bookingModel.addBooking(Main.getCurrentUser(), BookingTwoController.getSeatNum(), BookingController.getTempBookingDateString());
 

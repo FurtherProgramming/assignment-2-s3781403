@@ -49,9 +49,9 @@ public class LoginModel {
         } catch (Exception e) {
             return false;
         } finally {
-//            preparedStatement.close();  //Definitely causes errors
-//            resultSet.close();
-//            connection.close();
+            preparedStatement.close();  //Definitely causes errors
+            resultSet.close();
+            connection.close();
         }
 
     }
