@@ -78,7 +78,7 @@
                   <Button fx:id="seat18" layoutX="263.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 18" />
                   <Button fx:id="seat19" layoutX="336.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 19" />
                   <Button fx:id="seat20" layoutX="422.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 20" />
-                  <Text layoutX="196.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a seat to select it" />
+                  <Text layoutX="185.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a seat to select it" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cfe8ffbc" height="30.0" layoutX="177.0" layoutY="-31.0" stroke="BLACK" strokeType="INSIDE" width="234.0" />
                   <Label fx:id="bookDateDisplay" layoutX="303.0" layoutY="-25.0" text="YYYYY-MM-DD">
                      <font>
@@ -90,6 +90,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
+                  <Text layoutX="142.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You cannot select a seat you've recently sat in" />
                </children>
             </Group>
             <Text layoutX="567.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key">

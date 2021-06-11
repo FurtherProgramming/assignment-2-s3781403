@@ -112,4 +112,5 @@ public class BookingModel {
         }
         return bookedSeats;
     }
+
 }

@@ -1,5 +1,6 @@
 package main.model;
 
+import main.Main;
 import main.SQLConnection;
 
 import java.sql.Connection;
@@ -79,5 +80,28 @@ public class UserModel {
     }
 
 
+    public String selectPreviousSeat() {
+        String previousSeat = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT previousseat FROM Employees WHERE username = ?";
 
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, Main.getCurrentUser());
+
+            resultSet = preparedStatement.executeQuery();
+
+            if(resultSet != null) {
+                previousSeat = resultSet.getString("previousSeat");
+            } else {
+                return null;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return previousSeat;
+    }
 }
