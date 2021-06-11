@@ -20,17 +20,21 @@ import java.util.ResourceBundle;
 
 public class BookingController implements Initializable {
 
-    private static LocalDate tempBookingDate;
     public BookingModel bookingModel = new BookingModel();
     public UserModel userModel = new UserModel();
+
     @FXML
-    private Button btnNext2, btnCancel2, chosenBtn;
+    private Button btnNextStep, btnCancel, chosenBtn;
     @FXML
     private DatePicker bookingDate;
     @FXML
     private Label bookDateDisplay, labelWarning;
+
     private boolean userHasBooking;
     private int employeeID;
+    private static LocalDate tempBookingDate;
+
+    //TODO move all temporary variables from their controllers into the model where they belong
 
     public static String getTempBookingDateString() {
         return tempBookingDate.toString();
@@ -50,6 +54,7 @@ public class BookingController implements Initializable {
         }
         if (userHasBooking) {
             bookingDate.setDisable(true);
+            btnNextStep.setDisable(true);
             labelWarning.setText("You already have a booking!");
             labelWarning.setVisible(true);
         }

@@ -38,26 +38,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LandingController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <Text layoutX="148.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Arub Hotdesk, ">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Label layoutX="367.0" layoutY="19.0" text="EmployeeName">
+            <Label fx:id="labelEmplName" alignment="CENTER" layoutX="135.0" layoutY="20.0" prefHeight="27.0" prefWidth="365.0" text="EmployeeName">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <Button fx:id="makeBooking" layoutX="231.0" layoutY="74.0" mnemonicParsing="false" onAction="#redirectBookingPage" prefHeight="47.0" prefWidth="178.0" text="Make a Booking" />
-            <Button layoutX="232.0" layoutY="147.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="View table allocations" />
-            <Button layoutX="232.0" layoutY="219.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="Cancel a booking" />
-            <Button layoutX="232.0" layoutY="295.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="Account settings" />
+            <Button fx:id="manageBooking" layoutX="232.0" layoutY="147.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="View / Edit Booking" />
+            <Button fx:id="cancelBooking" disable="true" layoutX="232.0" layoutY="219.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="Cancel a booking" />
+            <Button disable="true" layoutX="232.0" layoutY="295.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="178.0" text="Account settings" />
             <Separator layoutX="138.0" layoutY="47.0" prefHeight="4.0" prefWidth="365.0" />
       </children>
     </AnchorPane>

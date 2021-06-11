@@ -64,7 +64,6 @@ public class UserModel {
 
             while (resultSet.next()) {
                 role = resultSet.getString("role");
-                System.out.println("Role: " + role);
                 return role;
             }
 
@@ -126,4 +125,32 @@ public class UserModel {
             preparedStatement.close();
         }
     }
+
+    public String getEmployeeName(String username) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT firstname FROM Employees WHERE username = ?";
+        String firstName = null;
+
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            resultSet = preparedStatement.executeQuery();
+
+            firstName = resultSet.getString("firstname");
+
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            resultSet.close();
+            preparedStatement.close();
+        }
+        return firstName;
+    }
+
 }

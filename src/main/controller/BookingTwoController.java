@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+//TODO move temp var into model
 public class BookingTwoController implements Initializable {
 
     private static String seatNum;
