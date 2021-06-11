@@ -21,15 +21,24 @@ public class ManageBookingController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeButtons();
+        //if userHasBooking();
+        //    updateBookingTable();
+        //else
+        //    disableTable();
+        //    updateLabels();
     }
 
     private void initializeButtons() {
         confirmChange.setOnAction((ActionEvent e) ->
                 SceneController.alertBox("Confirm Changes?", "Update your bookings information?")
+                //If alert box returns true: update the database with changes
+                //else, close alert box
         );
 
         deleteBooking.setOnAction((ActionEvent e) ->
                 SceneController.alertBox("Delete Booking?", "This action cannot be undone")
+                //If alert box returns true: delete the entry from the database
+                //Else: close the alert box
         );
 
         cancel.setOnAction((ActionEvent e) ->

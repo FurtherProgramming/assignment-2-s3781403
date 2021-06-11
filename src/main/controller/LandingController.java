@@ -45,8 +45,6 @@ public class LandingController implements Initializable {
         }
     }
 
-
-
     public void redirectBookingPage(ActionEvent actionEvent) throws IOException {
         SceneController.drawScene("ui/staff/booking_page_1.fxml");
     }
