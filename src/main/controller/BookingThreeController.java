@@ -35,20 +35,21 @@ public class BookingThreeController implements Initializable {
 
     //Creates booking using gathered information
 
-    public void createBooking(ActionEvent actionEvent) throws SQLException {
+    public void createBooking(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("----------------------\n Booking added \n User: " + Main.getCurrentUser()
                 + "\n Seat: " + BookingTwoController.getSeatNum()
                 + "\n Date: " + BookingController.getTempBookingDateString()
                 +"\n----------------------\n");
-        //TODO check if a user has a booking already. - May need to notify / remove the booking
+
         bookingModel.addBooking(user, bookedSeat, bookedDate);
         userModel.setPreviousSeat(bookedSeat);
         //Remove temporary variables from other controllers.
         BookingTwoController.removeSeatNum();
         BookingController.removeTempDate();
-
+        SceneController.drawScene("ui/staff/landingpage.fxml");
     }
 
+    //TODO Add edit features at a later date. Not part of project scope ?
     public void editBookDate(ActionEvent actionEvent) {
     }
 
@@ -56,8 +57,9 @@ public class BookingThreeController implements Initializable {
     }
 
     //This is cancel, should delete a temporary booking if there is one.
-
     public void goLandingPage(ActionEvent actionEvent) throws IOException {
+        BookingController.removeTempDate();
+        BookingTwoController.removeSeatNum();
         SceneController.drawScene("ui/staff/landingpage.fxml");
     }
 

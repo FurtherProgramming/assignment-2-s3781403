@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 
 public class BookingController implements Initializable {
 
+    private static LocalDate tempBookingDate;
     public BookingModel bookingModel = new BookingModel();
     public UserModel userModel = new UserModel();
     @FXML
@@ -28,12 +29,11 @@ public class BookingController implements Initializable {
     private DatePicker bookingDate;
     @FXML
     private Label bookDateDisplay, labelWarning;
-
-    private static LocalDate tempBookingDate;
     private boolean userHasBooking;
     private int employeeID;
-    public static void removeTempDate() {
 
+    public static String getTempBookingDateString() {
+        return tempBookingDate.toString();
     }
 
     @Override
@@ -48,7 +48,7 @@ public class BookingController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        if(userHasBooking) {
+        if (userHasBooking) {
             bookingDate.setDisable(true);
             labelWarning.setText("You already have a booking!");
             labelWarning.setVisible(true);
@@ -77,26 +77,24 @@ public class BookingController implements Initializable {
     //TODO add multiple labels for different warnings for correct styling
     public void goBookingTwo(ActionEvent actionEvent) throws IOException {
 //        bookingModel.setBookedDate(tempBookingDate);
-        if(tempBookingDate!=null && tempBookingDate.isEqual(LocalDate.now()) || tempBookingDate.isAfter(LocalDate.now())) {
+        if (tempBookingDate != null && tempBookingDate.isEqual(LocalDate.now()) || tempBookingDate.isAfter(LocalDate.now())) {
             SceneController.drawScene("ui/staff/booking_page_2.fxml");
-        } else if (tempBookingDate.isBefore(LocalDate.now())){
+        } else if (tempBookingDate.isBefore(LocalDate.now())) {
             labelWarning.setText("Please select a date in the future!");
             labelWarning.setVisible(true);
         } else {
             labelWarning.setVisible(true);
         }
 
-//        bookDateDisplay.setText(tempBookingDate.toString());
     }
 
-    //Booking page 1 temporary set value for later bookings.
+    //For later bookings
     public void setBookingDate(ActionEvent actionEvent) {
-        tempBookingDate=bookingDate.getValue();
+        tempBookingDate = bookingDate.getValue();
     }
 
-    public static String getTempBookingDateString() {
-        return tempBookingDate.toString();
+    public static void removeTempDate() {
+        tempBookingDate = null;
     }
-
 
 }

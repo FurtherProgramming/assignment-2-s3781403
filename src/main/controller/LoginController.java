@@ -39,6 +39,7 @@ public class LoginController implements Initializable {
     /* login Action method
        check if user input is the same as database.
      */
+    //TODO Need a way to check user login before closing connection in model. (otherwise no multiple tries).
     public void Login(ActionEvent event) {
 
         try {

@@ -37,6 +37,7 @@ public class BookingTwoController implements Initializable {
     }
 
     public static void removeSeatNum() {
+        seatNum=null;
     }
 
     @Override
@@ -48,16 +49,15 @@ public class BookingTwoController implements Initializable {
         initializePreviousSeat();
     }
 
+    //Checks if the user has a previous seat and colours it if true
     private void initializePreviousSeat() {
         String previousSeat = null;
-
         try {
             previousSeat = userModel.selectPreviousSeat();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-
         for (int i = 0; i < 20; i++) {
             if (previousSeat.equals(seatsArray.get(i).getId().trim())) {
                 seatsArray.get(i).setStyle("-fx-background-color: maroon");
@@ -79,7 +79,8 @@ public class BookingTwoController implements Initializable {
         colourSeats(covidLockedSeats, bookedSeats);
     }
 
-    //Nested for loops to find unavailable seats in the array of seats, then disable/colour them based on the style of availability.
+    // Nested for loops to select unavailable seats from the database.
+    //  Disables/colour them based on the style of availability.
     private void colourSeats(ArrayList<String> covidLockedSeats, ArrayList<String> bookedSeats) {
         for (String covidLockedSeat : covidLockedSeats) {
             for (Button button : seatsArray) {
@@ -99,7 +100,7 @@ public class BookingTwoController implements Initializable {
         }
     }
 
-    //Checks if the user has chosen a button
+    //Checks if the user has chosen a button, redirects to booking p3 if they have.
     public void goBookingThree(ActionEvent actionEvent) throws IOException {
         if (chosenBtn != null) {
             SceneController.drawScene("ui/staff/booking_page_3.fxml");
@@ -109,8 +110,9 @@ public class BookingTwoController implements Initializable {
 
     }
 
-    //This is cancel, should unset temp values.
+    //"cancel" - clears booking page 1's temp value.
     public void goLandingPage(ActionEvent actionEvent) throws IOException {
+        BookingController.removeTempDate();
         SceneController.drawScene("ui/staff/landingpage.fxml");
     }
 
