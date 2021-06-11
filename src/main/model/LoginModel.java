@@ -25,11 +25,8 @@ public class LoginModel {
         }
     }
 
-
     //Pretty sure that this isLogin fails when multiple attempts are thrown at it
-    //This is fine, if the correct user/pass are put in the first time, but after that,
-    //It fails to work again. -> add in a check (with a certain number of attempts?) to
-    //See whether
+    // add in a check to see if can close the connection or not
     public Boolean isLogin(String user, String pass) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;

@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.Main;
 import main.model.BookingModel;
+import main.model.UserModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -16,6 +17,7 @@ import java.util.ResourceBundle;
 public class BookingThreeController implements Initializable {
 
     public BookingModel bookingModel = new BookingModel();
+    public UserModel userModel = new UserModel();
 
     @FXML
     private Button btnFinish, editDate, btnCancel3;
@@ -29,23 +31,21 @@ public class BookingThreeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setBookingValues();
         setLabels();
-
     }
 
     //Creates booking using gathered information
 
     public void createBooking(ActionEvent actionEvent) throws SQLException {
-
-        System.out.println("User: " +  Main.getCurrentUser() + "\nSeat: " + BookingTwoController.getSeatNum() + "\nDate: " + BookingController.getTempBookingDateString());
-
+        System.out.println("----------------------\n Booking added \n User: " + Main.getCurrentUser()
+                + "\n Seat: " + BookingTwoController.getSeatNum()
+                + "\n Date: " + BookingController.getTempBookingDateString()
+                +"\n----------------------\n");
         //TODO check if a user has a booking already. - May need to notify / remove the booking
-
-        bookingModel.addBooking(Main.getCurrentUser(), BookingTwoController.getSeatNum(), BookingController.getTempBookingDateString());
-
-        //Remove temporary variables.
-
+        bookingModel.addBooking(user, bookedSeat, bookedDate);
+        userModel.setPreviousSeat(bookedSeat);
+        //Remove temporary variables from other controllers.
         BookingTwoController.removeSeatNum();
-        BookingController.setTempDate();
+        BookingController.removeTempDate();
 
     }
 

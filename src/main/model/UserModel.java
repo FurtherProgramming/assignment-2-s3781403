@@ -40,7 +40,6 @@ public class UserModel {
 //
 //            }
 
-
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -48,8 +47,6 @@ public class UserModel {
             preparedStatement.close();
             connection.close();
         }
-        System.out.println("User ID:" + employeeID);
-
         return employeeID;
 
 
@@ -80,7 +77,7 @@ public class UserModel {
     }
 
 
-    public String selectPreviousSeat() {
+    public String selectPreviousSeat() throws SQLException {
         String previousSeat = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -101,7 +98,30 @@ public class UserModel {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
+        } finally {
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
         }
         return previousSeat;
+    }
+
+    public void setPreviousSeat(String seatNum) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String update = "UPDATE Employees SET (previousseat) = ? WHERE username = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(update);
+            preparedStatement.setString(1, seatNum);
+            preparedStatement.setString(2, Main.getCurrentUser());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            preparedStatement.close();
+        }
     }
 }

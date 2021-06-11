@@ -14,9 +14,6 @@ public class BookingModel {
     Connection connection;
     UserModel userModel = new UserModel();
 
-    private String insertBookingDate = "INSERT INTO bookings(employee_id, bookedDate) VALUES(?, ?)";
-//    private String insertBooking = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
-
     public BookingModel() {
         connection = SQLConnection.connect();
 
@@ -26,7 +23,6 @@ public class BookingModel {
     }
 
     public void addBooking(String currentUser, String seatNum, String bookingDateString) throws SQLException {
-        System.out.println(seatNum);
         PreparedStatement preparedStatement = null;
         String update = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
 
@@ -83,7 +79,8 @@ public class BookingModel {
             System.out.println(e.getMessage());
             e.printStackTrace();
         } finally {
-            //closing connection here -> fails selectBooked ..
+            //closing connection here causes select booked seats to close because of the nested loops in B2 calls
+            //TODO solve this later. Not a now problem -> doesn't cause any issues (that I know of)
         }
         return lockedSeats;
     }
@@ -111,6 +108,32 @@ public class BookingModel {
             connection.close();
         }
         return bookedSeats;
+    }
+
+    public boolean checkUserBooking(int employeeID) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT * FROM bookings WHERE employee_id = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, employeeID);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                return true;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            resultSet.close();
+            preparedStatement.close();
+        }
+        return false;
     }
 
 }

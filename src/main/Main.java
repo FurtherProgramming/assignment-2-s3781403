@@ -50,7 +50,6 @@ public class Main extends Application {
 
     public static void setCurrentUser(String currentUser) {
         Main.currentUser = currentUser;
-        System.out.println(Main.currentUser);
     }
 
     @Override

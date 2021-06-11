@@ -49,7 +49,14 @@ public class BookingTwoController implements Initializable {
     }
 
     private void initializePreviousSeat() {
-        String previousSeat = userModel.selectPreviousSeat();
+        String previousSeat = null;
+
+        try {
+            previousSeat = userModel.selectPreviousSeat();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
 
         for (int i = 0; i < 20; i++) {
             if (previousSeat.equals(seatsArray.get(i).getId().trim())) {
