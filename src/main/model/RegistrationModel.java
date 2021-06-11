@@ -49,8 +49,9 @@ public class RegistrationModel {
         } finally {
 
             //TODO This stuff should only happen if you correctly put things in the inputs.
-//            preparedStatement.close();    // This could be uncommented once the rego page redirects to login
-//            connection.close();
+            preparedStatement.close();
+            connection.close();
+
         }
         return true;
     }

@@ -10,24 +10,14 @@ public class Main extends Application {
 
     //Declare variables so controller can change scenes
     private static Parent root;
-    private static Stage primaryStage; //Better variable name
-    private static String title; //TODO Use this later ?
+    private static Stage primaryStage;
+    private static String title; //TODO decide if this is necessary
 
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        root = FXMLLoader.load(getClass().getResource("ui/login.fxml"));
-        Main.primaryStage = primaryStage;
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Arub Seat Management");
-        primaryStage.show();
-    }
+    private static String currentUser; ///This is the username of the employee who is logged in.
 
     public static void main(String[] args) {
         launch(args);
     }
-
 
     //Getters/Setters for scene drawing
     public static Parent getRoot() {
@@ -52,6 +42,24 @@ public class Main extends Application {
 
     public static void setTitle(String title) {
         Main.title = title;
+    }
+
+    public static String getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(String currentUser) {
+        Main.currentUser = currentUser;
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        root = FXMLLoader.load(getClass().getResource("ui/login.fxml"));
+        Main.primaryStage = primaryStage;
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Arub Seat Management");
+        primaryStage.show();
     }
 
 

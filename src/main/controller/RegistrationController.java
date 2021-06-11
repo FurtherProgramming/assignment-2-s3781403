@@ -35,6 +35,7 @@ public class RegistrationController implements Initializable {
     @FXML
     private Button btnGoLoginPage, btnCancel, registerButton;
 
+
     //Variables to be manipulated and then passed into SQL statements
     private int sqlEmployeeID, sqlPreviousSeat;
     private String sqlFirstName, sqlLastname, sqlUsername, sqlSecQuestion, sqlSecAnswer, sqlPassword, sqlSecondPass, sqlStaffRole;
@@ -55,7 +56,7 @@ public class RegistrationController implements Initializable {
 
         checkRegistrationInputs(); //TODO: Code this
 
-        generateSqlFriendlyInputs();
+        generateInputs();
 
         //Also want to add some additional checks here: password length, password strength, etc
         //Perhaps can use lambdas to do checks on multiple things at once
@@ -110,7 +111,7 @@ public class RegistrationController implements Initializable {
 
 
     //I believe this method is now redundant, sadly.
-    private void generateSqlFriendlyInputs() {
+    private void generateInputs() {
 
         sqlEmployeeID = Integer.parseInt(txtEmployeeID.getText());
         sqlFirstName = txtFirstName.getText();          //Should create a full name variable?

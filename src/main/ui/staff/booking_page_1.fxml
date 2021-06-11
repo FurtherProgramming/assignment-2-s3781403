@@ -42,34 +42,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.BookingController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <Text layoutX="233.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new booking">
+            <Text layoutX="232.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new booking">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <DatePicker layoutX="219.0" layoutY="121.0" />
-            <Button fx:id="checkAvailable" layoutX="407.0" layoutY="121.0" mnemonicParsing="false" onAction="#checkBookingDate" text="Check availability" />
+            <DatePicker fx:id="bookingDate" layoutX="219.0" layoutY="121.0" onAction="#setBookingDate" />
+            <Button fx:id="checkAvailable" disable="true" layoutX="407.0" layoutY="121.0" mnemonicParsing="false" onAction="#checkBookingDate" text="Check availability" />
             <Text layoutX="91.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Booking Date:">
                <font>
                   <Font size="14.0" />
                </font></Text>
             <Separator layoutX="38.0" layoutY="200.0" prefHeight="0.0" prefWidth="564.0" />
-            <Button fx:id="btnNextStep" defaultButton="true" layoutX="504.0" layoutY="311.0" mnemonicParsing="false" onAction="#goBookingTwo" prefHeight="35.0" prefWidth="80.0" text="Next Step" />
-            <Button fx:id="btnCancel" cancelButton="true" layoutX="55.0" layoutY="316.0" mnemonicParsing="false" onAction="#goLandingPage" prefHeight="25.0" prefWidth="73.0" text="Cancel" />
-            <Ellipse fill="#5eb0f8" layoutX="247.0" layoutY="347.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
-            <Ellipse fill="#d9dada" layoutX="320.0" layoutY="347.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
-            <Ellipse fill="#d9dada" layoutX="393.0" layoutY="347.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button fx:id="btnNextStep" defaultButton="true" layoutX="504.0" layoutY="336.0" mnemonicParsing="false" onAction="#goBookingTwo" prefHeight="35.0" prefWidth="80.0" text="Next Step" />
+            <Button fx:id="btnCancel" cancelButton="true" layoutX="46.0" layoutY="341.0" mnemonicParsing="false" onAction="#goLandingPage" prefHeight="25.0" prefWidth="73.0" text="Cancel" />
+            <Ellipse fill="#5eb0f8" layoutX="247.0" layoutY="351.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
+            <Ellipse fill="#d9dada" layoutX="320.0" layoutY="351.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
+            <Ellipse fill="#d9dada" layoutX="393.0" layoutY="351.0" radiusX="14.0" radiusY="14.0" stroke="BLACK" strokeType="INSIDE" />
             <Label layoutX="408.0" layoutY="154.0" prefHeight="17.0" prefWidth="107.0" text="Availability" visible="false" />
-            <Separator layoutX="220.0" layoutY="57.0" prefWidth="200.0" />
+            <Separator layoutX="233.0" layoutY="36.0" prefWidth="174.0" />
             <Label layoutX="431.0" layoutY="245.0" text="Please complete all steps first" textFill="RED" visible="false">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
+            <Label fx:id="labelWarning" layoutX="204.0" layoutY="163.0" text="Please select a date before moving on!" textFill="RED" visible="false" />
          </children>
     </AnchorPane>
   </children>
