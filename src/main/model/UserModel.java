@@ -10,16 +10,15 @@ import java.sql.SQLException;
 
 public class UserModel {
 
-    Connection connection; //Couldn't make this work without it being static
-
     private static final String employeeIDByUser = "SELECT id FROM Employees WHERE username = ?";
+    Connection connection; //Couldn't make this work without it being static
     private String role;
 
 
     public UserModel() {
         connection = SQLConnection.connect();
 
-        if(connection==null) {
+        if (connection == null) {
             System.exit(1);
         }
     }
@@ -31,7 +30,7 @@ public class UserModel {
 
         try {
             preparedStatement = connection.prepareStatement(employeeIDByUser);
-            preparedStatement.setString(1,currentUser);
+            preparedStatement.setString(1, currentUser);
 
 
             resultSet = preparedStatement.executeQuery();
@@ -40,7 +39,7 @@ public class UserModel {
 //
 //            }
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
             resultSet.close();
@@ -61,9 +60,13 @@ public class UserModel {
         try {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, username);
-
             resultSet = preparedStatement.executeQuery();
-            role = resultSet.getString("role");
+
+            while (resultSet.next()) {
+                role = resultSet.getString("role");
+                System.out.println("Role: " + role);
+                return role;
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -73,7 +76,6 @@ public class UserModel {
             connection.close();
         }
         return role;
-
     }
 
 
@@ -89,7 +91,7 @@ public class UserModel {
 
             resultSet = preparedStatement.executeQuery();
 
-            if(resultSet != null) {
+            if (resultSet != null) {
                 previousSeat = resultSet.getString("previousSeat");
             } else {
                 return null;

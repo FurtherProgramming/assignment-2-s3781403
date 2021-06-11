@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 //TODO can't select date in past
@@ -24,10 +22,6 @@ public class BookingController implements Initializable {
 
     public BookingModel bookingModel = new BookingModel();
     public UserModel userModel = new UserModel();
-    @FXML
-    private Button seat1, seat2, seat4, seat5, seat7, seat9, seat11, seat15, seat19, seat18, seat3, seat16, seat17, seat13, seat6, seat8, seat10, seat12, seat20, seat14;
-    @FXML
-    private List<Button> seatsArray = new ArrayList<>();
     @FXML
     private Button btnNext2, btnCancel2, chosenBtn;
     @FXML

@@ -63,7 +63,7 @@ public class LoginController implements Initializable {
 
         if (staffType.equals("admin")) {
             SceneController.drawScene("ui/admin/admin_landingpage.fxml");
-        } else if (staffType.equals("staff")) {
+        } else if (staffType.trim().equals("staff")) {
             SceneController.drawScene("ui/staff/landingpage.fxml");
         } else {
             isConnected.setText("User has no role");
