@@ -51,6 +51,7 @@ public class BookingModel {
 
     }
 
+    //TODO Move this to user model
     private int getUserID(String currentUser) {
 
         int userID = 0; //TODO Should test for this before / after return somehow
@@ -64,41 +65,51 @@ public class BookingModel {
 
     }
 
-    public ArrayList<String> selectLockdownSeats(String bookedDate) {
+    public ArrayList<String> selectCovidSeats(String bookedDate) throws SQLException {
         ArrayList<String> lockedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'covid'";
 
         try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, bookedDate);
+            resultSet = preparedStatement.executeQuery();
 
-
-        } catch(SQLException e) {
+            while (resultSet.next()) {
+                lockedSeats.add(resultSet.getString(1));
+            }
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
-
         } finally {
-
+            //closing connection here -> fails selectBooked ..
         }
-        
+        return lockedSeats;
     }
 
-    public ArrayList<String> selectBookedSeats(String bookedDate) {
+    public ArrayList<String> selectBookedSeats(String bookedDate) throws SQLException {
         ArrayList<String> bookedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'booked'";
 
         try {
+            preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, bookedDate);
             resultSet = preparedStatement.executeQuery();
-            
 
-
+            while (resultSet.next()) {
+                bookedSeats.add(resultSet.getString(1));
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
+        } finally {
+            preparedStatement.close();
+            resultSet.close();
+            connection.close();
         }
-
+        return bookedSeats;
     }
 }

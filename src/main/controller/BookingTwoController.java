@@ -9,6 +9,7 @@ import main.model.BookingModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +26,7 @@ public class BookingTwoController implements Initializable {
     @FXML
     private Button btnNext2, btnCancel2, chosenBtn;
     @FXML
-    private Label bookDateDisplay;
+    private Label bookDateDisplay, warnings;
 
     private String bookingDate;
 
@@ -33,38 +34,57 @@ public class BookingTwoController implements Initializable {
         return seatNum;
     }
 
+    public static void removeSeatNum() {
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         bookingDate = BookingController.getTempBookingDateString();
         seatsArray.addAll(Arrays.asList(seat1, seat2, seat4, seat5, seat7, seat9, seat11, seat15, seat19, seat18, seat3, seat16, seat17, seat13, seat6, seat8, seat10, seat12, seat20, seat14));
         bookDateDisplay.setText(bookingDate);
-        colourBookedSeats();
-        colourLockdownSeats();
 
-    }
-
-    private void colourLockdownSeats() {
-
-        if(bookingModel.selectLockdownSeats(bookingDate) != null) {
-            //for loop that matches each returned seat to their respective array thing
-        }
+        initializeUnavailableSeats();
 
 
     }
 
-    //
-    private void colourBookedSeats() {
 
-        if(bookingModel.selectBookedSeats(bookingDate) != null) {
-            //similar for loop to lockdown, with different colour.
+    private void initializeUnavailableSeats() {
+        ArrayList<String> covidLockedSeats = new ArrayList<>();
+        ArrayList<String> bookedSeats = new ArrayList<>();
+        try {
+            covidLockedSeats = bookingModel.selectCovidSeats(bookingDate);
+            bookedSeats = bookingModel.selectBookedSeats(bookingDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        colourSeats(covidLockedSeats, bookedSeats);
+    }
 
+    private void colourSeats(ArrayList<String> covidLockedSeats, ArrayList<String> bookedSeats) {
+        for (int i = 0; i < covidLockedSeats.size(); i++) {
+            for (int j = 0; j < seatsArray.size(); j++) {
+                if (covidLockedSeats.get(i).equals(seatsArray.get(j).getId().trim())) {
+                    seatsArray.get(j).setStyle("-fx-background-color: orange");
+                    seatsArray.get(j).setDisable(true);
+                }
+                if (bookedSeats.get(i).equals(seatsArray.get(j).getId().trim())) {
+                    seatsArray.get(j).setStyle("-fx-background-color: LIGHTCORAL");
+                    seatsArray.get(j).setDisable(true);
+                }
+            }
+        }
     }
 
     //Checks if the user has chosen a button
     //Calls methods to add to DB and redirects to b3
     public void goBookingThree(ActionEvent actionEvent) throws IOException {
-        SceneController.drawScene("ui/staff/booking_page_3.fxml");
+        if (chosenBtn != null) {
+            SceneController.drawScene("ui/staff/booking_page_3.fxml");
+        } else {
+            warnings.setVisible(true);
+        }
+
     }
 
     //This is cancel, should delete a temporary booking if there is one.

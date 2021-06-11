@@ -38,7 +38,14 @@ public class BookingThreeController implements Initializable {
 
         System.out.println("User: " +  Main.getCurrentUser() + "\nSeat: " + BookingTwoController.getSeatNum() + "\nDate: " + BookingController.getTempBookingDateString());
 
+        //TODO check if a user has a booking already. - May need to notify / remove the booking
+
         bookingModel.addBooking(Main.getCurrentUser(), BookingTwoController.getSeatNum(), BookingController.getTempBookingDateString());
+
+        //Remove temporary variables.
+
+        BookingTwoController.removeSeatNum();
+        BookingController.setTempDate();
 
     }
 

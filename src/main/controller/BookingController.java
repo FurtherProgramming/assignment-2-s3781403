@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+//TODO can't select date in past
+
 public class BookingController implements Initializable {
 
     public BookingModel bookingModel = new BookingModel();
@@ -31,6 +33,9 @@ public class BookingController implements Initializable {
     private Label bookDateDisplay, labelWarning;
 
     private static LocalDate tempBookingDate;
+
+    public static void setTempDate() {
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

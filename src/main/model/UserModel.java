@@ -32,8 +32,13 @@ public class UserModel {
             preparedStatement = connection.prepareStatement(employeeIDByUser);
             preparedStatement.setString(1,currentUser);
 
+
             resultSet = preparedStatement.executeQuery();
             employeeID = resultSet.getInt("id");
+//            if(resultSet.next()) {
+//
+//            }
+
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
