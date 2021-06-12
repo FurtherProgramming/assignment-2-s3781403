@@ -189,19 +189,4 @@ public class BookingModel {
         }
     }
 
-    //TODO test if this can be safely deleted
-//    //Gets the user ID for use in other
-//    private int getUserID(String currentUser) {
-//        UserModel userModel1 = new UserModel();
-//        int userID = 0;
-//
-//        try {
-//            userID = userModel1.getEmployeeID(currentUser);
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//            e.printStackTrace();
-//        }
-//        return userID;
-//    }
-
 }
