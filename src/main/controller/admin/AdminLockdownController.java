@@ -94,6 +94,7 @@ public class AdminLockdownController implements Initializable {
 
     private void setCovidLockedSeats() {
         UserModel userModel = new UserModel();
+        AdminBookingModel admBookModel = new AdminBookingModel();
         int employeeID = 0;
 
         try {
@@ -101,6 +102,9 @@ public class AdminLockdownController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        // TODO Add if check for already have a booking
+
+        admBookModel.checkBooking(chosenDate);
 
         //Loops through the pre-assigned covid spacing seats and adds them to a booking.
         //If don't create new bookingModel every time, the close() statements in the model cause errors
@@ -112,7 +116,9 @@ public class AdminLockdownController implements Initializable {
                 e.printStackTrace();
             }
         }
-
+        warning.setText("Successfully Covid Locked");
+        warning.setStyle("-fx-text-fill: green");
+        warning.setVisible(true);
     }
 
     private void setVisible(Group option) {

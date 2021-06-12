@@ -7,21 +7,20 @@ public class AdminBookingModel extends BookingModel {
     Connection connection;
     UserModel userModel = new UserModel();
 
+    //Sets / clears any COVID related bookings from a specific date
     public void setNoLockdown(String chosenDate) {
         PreparedStatement preparedStatement = null;
         String update = "DELETE FROM bookings WHERE status='covid' AND bookedDate = ?";
 
-
-
     }
 
-
-    public void setBookedSeatsCovid(String chosenDate) {
-        PreparedStatement preparedStatement = null;
-        String update = "UPDATE bookings SET status = 'covid' WHERE bookedDate = ? AND seat = ('seat1', 'seat3', 'seat5', 'seat8', 'seat9', 'seat12', 'seat13', 'seat16', 'seat18', 'seat20')";
-    }
-
-
+    //Locks down all seats for the chosen date
     public void setFullLockdown(String chosenDate) {
+    }
+
+    //Checks if there is a booking on a specific date
+    public void checkBooking(String chosenDate) {
+
+
     }
 }

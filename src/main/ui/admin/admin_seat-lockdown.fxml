@@ -131,7 +131,11 @@
             <Text layoutX="199.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select lockdown date, and then choose one option from below" />
             <Button fx:id="btnOptionOne" disable="true" layoutX="220.0" layoutY="139.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="93.0" text="Option 1" />
             <Button fx:id="btnOptionTwo" disable="true" layoutX="584.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" text="Option 2" />
-            <Label fx:id="warning" alignment="CENTER" layoutX="264.0" layoutY="110.0" prefHeight="17.0" prefWidth="207.0" text="warning" textFill="RED" visible="false" />
+            <Label fx:id="warning" alignment="CENTER" layoutX="215.0" layoutY="107.0" prefHeight="17.0" prefWidth="298.0" text="warning" textFill="RED">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
       </children>
     </AnchorPane>
   </children>
