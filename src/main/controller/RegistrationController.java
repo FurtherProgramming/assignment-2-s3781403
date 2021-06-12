@@ -54,7 +54,7 @@ public class RegistrationController implements Initializable {
     //Clicking button on registration page brings here, this is where the logic happens
     public void Register(ActionEvent actionEvent) throws SQLException {
 
-        checkRegistrationInputs(); //TODO: Code this
+        checkRegistrationInputs(); //TODO: Code check all inputs are valid
 
         generateInputs();
 

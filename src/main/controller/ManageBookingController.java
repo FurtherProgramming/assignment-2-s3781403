@@ -20,7 +20,8 @@ import java.util.ResourceBundle;
 /*
     TODO Extend a superclass that handles button creation and drawing.
      - Add Check that it isn't 48 hours before
-
+     - REALLY REMEMBER TO FIX THE OO -- IT'S BAD AT THE MOMENT!
+     - CLEAN UP BOOKING CLASSES!
  */
 
 public class ManageBookingController implements Initializable {
