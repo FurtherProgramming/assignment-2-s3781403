@@ -33,12 +33,13 @@ public class AdminLockdownController implements Initializable {
     private DatePicker datePicker;
     @FXML
     private Label warning;
+
     private MenuItem selectedItem;
     private String chosenDate;
 
     /*
         TODO: When adding a covid lockdown, must also remove any booking in a seat that is already occupied.
-        TODO: Must also check for an existing covid booking on date before moving onto adding / removing bookings.
+        TODO: Add ability for admin to select specific seats, instead of just the three options.
      */
 
     @Override
@@ -49,6 +50,7 @@ public class AdminLockdownController implements Initializable {
         fullLockdownSeats.addAll(Arrays.asList("seat1", "seat2", "seat3", "seat4", "seat5", "seat6", "seat7", "seat8", "seat9", "seat10", "seat11", "seat12", "seat13", "seat14", "seat15", "seat16", "seat17", "seat18", "seat19", "seat20"));
     }
 
+    //Creates actions for each button/datePicker
     private void initiateControls() {
         datePicker.setOnAction((ActionEvent e) -> selectedDate(datePicker));
         btnOptionOne.setOnAction((ActionEvent e) -> setVisible(optionOne));
@@ -57,18 +59,22 @@ public class AdminLockdownController implements Initializable {
         btnReturnHome.setOnAction((ActionEvent e) -> redirect("ui/admin/admin_landingpage.fxml"));
     }
 
+    //Creates actions for the menu in option 2 on UI page.
     private void initiateOptionTwoMenu() {
         menuNoCond.setOnAction((ActionEvent e) -> setMenuOption("No Condition", menuNoCond));
         menuCovid.setOnAction((ActionEvent e) -> setMenuOption("Covid Condition", menuCovid));
         menuFullLock.setOnAction((ActionEvent e) -> setMenuOption("Full Lockdown", menuFullLock));
     }
 
+    //Sets the selected menu item as a local variable and allows the user
+    //To confirm their change
     private void setMenuOption(String lockdownType, MenuItem chosenItem) {
         selectedItem = chosenItem;
         menuButton.setText(lockdownType);
         btnConfirmTwo.setDisable(false);
     }
 
+    //Indicates that the user has or hasn't selected an appropriate date.
     private void selectedDate(DatePicker picker) {
         if (picker.getValue().isBefore(LocalDate.now())) {
             warning.setText("Please select a date in the future");
@@ -83,8 +89,10 @@ public class AdminLockdownController implements Initializable {
         }
     }
 
+    //When the user clicks confirm in option two, this checks if there are already bookings for that date
+    //If there are bookings, it alerts the user. Otherwise, it updates the bookings table.
     private void lockdownOptionTwo() {
-        //IF BOOKING DATE DOES NOT ALREADY HAVE COVID BOOKINGS -
+
         if (selectedItem.getId().equals("menuNoCond") && hasBookings(chosenDate)) {
             clearCovidSeats();
         } else if (selectedItem.getId().equals("menuCovid") && !hasBookings(chosenDate)) {
@@ -92,33 +100,40 @@ public class AdminLockdownController implements Initializable {
         } else if (selectedItem.getId().equals("menuFullLock") && !hasBookings(chosenDate)) {
             setFullLockdown();
         } else {
-            warning.setText("Invalid Selection on Menu Item");
+            displayWarning("-fx-text-fill: red", "There is already covid bookings for this date", true);
         }
 
     }
 
-    //TODO coding this - post commit work
+    //Returns a boolean to check whether a chosen date has any bookings.
     private boolean hasBookings(String chosenDate) {
-        return true;
+        AdminBookingModel adminBookingModel = new AdminBookingModel();
+        boolean isBooking = false;
+
+        try {
+            isBooking = adminBookingModel.checkBooking(chosenDate);
+            return isBooking;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isBooking;
     }
 
-    //TODO: there needs to be a check here to see if there ARE actually any seats.
-    //TODO: write skeleton code into actual ode
+    //Clears any covid-related bookings from a selected date
     private void clearCovidSeats() {
         AdminBookingModel adminBookingModel1 = new AdminBookingModel();
-// if(adminbookingmodel2.checkIfCovidBookings(date) - boolean) {     -- do below try block
+
         try {
             adminBookingModel1.setNoLockdown(chosenDate);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        warning.setText("Successfully Reset Lockdown Status");
-        warning.setStyle("-fx-text-fill: green");
-        warning.setVisible(true);
-        //else {
-        //set warning label to be "there are no covid lockdown bookings for that date"
+        displayWarning("-fx-text-fill: green", "Successfully Reset Lockdown Status", true);
     }
 
+    //Sets covid locked seats by adding them into the database
+    //This is for the one space between each person
     private void setCovidLockedSeats() {
         UserModel userModel = new UserModel();
         int employeeID = 0;
@@ -129,13 +144,10 @@ public class AdminLockdownController implements Initializable {
         }
 
         enterSeats(employeeID, covidLockdownSeats);
-
-        warning.setText("Successfully Covid Locked");
-        warning.setStyle("-fx-text-fill: green");
-        warning.setVisible(true);
+        displayWarning("-fx-text-fill: green", "Successfully Covid Locked", true);
     }
 
-    //TODO make employeeID a class variable so that can be called upon w/out always creating new models.
+    //Locks down every single seat for a specific date.
     private void setFullLockdown() {
         UserModel userModel = new UserModel();
         int employeeID = 0;
@@ -148,19 +160,12 @@ public class AdminLockdownController implements Initializable {
         }
 
         enterSeats(employeeID, fullLockdownSeats);
-
-        warning.setText("Successfully Set Full Lockdown");
-        warning.setStyle("-fx-text-fill: green");
-        warning.setVisible(true);
-
+        displayWarning("-fx-text-fill: green", "Successfully Set Full Lockdown", true);
     }
 
+    //Puts either full lock down seat bookings, or 1 space seat bookings into the bookings table.
+    //A new adminBookingModel must be created each time, otherwise the original connection is closed.
     private void enterSeats(int employeeID, ArrayList<String> desiredSeats) {
-        // TODO Add if check for already have a booking
-        // - Like: if(dateAlreadyHasCovidBooking() -> setLabel to "already has covid bookings".
-        //Loops through the pre-assigned covid spacing seats and adds them to a booking.
-        //If don't create new bookingModel every time, the close() statements in the model cause errors
-        //admBookModel.checkBooking(chosenDate);
         for (String seat : desiredSeats) {
             AdminBookingModel adminBookingModel = new AdminBookingModel();
             try {
@@ -172,6 +177,7 @@ public class AdminLockdownController implements Initializable {
 
     }
 
+    //Sets group one or group two to visible depending on which option is clicked
     private void setVisible(Group option) {
         if (option.getId().equals("optionOne")) {
             option.setVisible(true);
@@ -182,6 +188,7 @@ public class AdminLockdownController implements Initializable {
         }
     }
 
+    //Redirects the user to a location (dynamic)
     private void redirect(String redirectLocation) {
         try {
             SceneController.drawScene(redirectLocation);
@@ -190,5 +197,9 @@ public class AdminLockdownController implements Initializable {
         }
     }
 
-
+    private void displayWarning(String textColour, String message, boolean visibility) {
+        warning.setStyle(textColour);
+        warning.setText(message);
+        warning.setVisible(visibility);
+    }
 }

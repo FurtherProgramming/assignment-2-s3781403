@@ -4,6 +4,7 @@ import main.SQLConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminBookingModel extends BookingModel {
@@ -37,9 +38,30 @@ public class AdminBookingModel extends BookingModel {
 
     }
 
-    //Checks if there is a booking on a specific date
-    public void checkBooking(String chosenDate) {
+    //Checks if there are bookings on a specific date, returns true if so
+    public boolean checkBooking(String chosenDate) throws SQLException {
+        String query = "SELECT * FROM bookings WHERE status = 'covid' AND bookedDate = ?";
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, chosenDate);
 
+            resultSet = preparedStatement.executeQuery();
 
+            if(!resultSet.isBeforeFirst()) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            preparedStatement.close();
+            resultSet.close();
+        }
+        return false;
     }
 }

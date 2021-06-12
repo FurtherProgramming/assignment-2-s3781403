@@ -22,7 +22,7 @@ public class BookingModel {
         }
     }
 
-    //Insert booking values into the database
+    //Adds all booking information into the database
     public void addBooking(int employeeID, String seatNum, String bookingDateString, String bookingType) throws SQLException {
         PreparedStatement preparedStatement = null;
         String update = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
@@ -47,21 +47,7 @@ public class BookingModel {
 
     }
 
-    //TODO Move this to user model
-    private int getUserID(String currentUser) {
-        UserModel userModel1 = new UserModel();
-        int userID = 0; //TODO Should test for this before / after return somehow
-
-        try {
-            userID = userModel1.getEmployeeID(currentUser);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return userID;
-    }
-
-    //Selects seats that are booked due to 'covid' reason
+    //Selects seats that are booked due to 'covid' reason, returns them as an arraylist
     public ArrayList<String> selectCovidSeats(String bookedDate) throws SQLException {
         ArrayList<String> lockedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -81,12 +67,14 @@ public class BookingModel {
             e.printStackTrace();
         } finally {
             //closing connection here causes select booked seats to close because of the nested loops in B2 calls
+            //It effectively closes itself afterward -> you can fix this by using different models for each call
+            //Becomes an issue if selectCovidSeats is called without selectBookedSeats being called after.
             //TODO solve this later. Not a now problem -> doesn't cause any issues (that I know of)
         }
         return lockedSeats;
     }
 
-    //Selects any seats booked by a staff member from the bookings table
+    //Selects any seats booked on a specific date, returns them as a list.
     public ArrayList<String> selectBookedSeats(String bookedDate) throws SQLException {
         ArrayList<String> bookedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -127,7 +115,6 @@ public class BookingModel {
             while (resultSet.next()) {
                 return true;
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -139,6 +126,7 @@ public class BookingModel {
         return false;
     }
 
+    //Gets the date that a user has booked a seat (if they have)
     public String getUserBookingDate(int employeeID) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -163,12 +151,13 @@ public class BookingModel {
         return null;
     }
 
+    //Updates a specific employees seat
     public void updateBookingSeat(int employeeID, String seatNum) throws SQLException {
         String update = "UPDATE bookings SET seat = ? WHERE employee_id = ?";
         PreparedStatement preparedStatement = null;
 
         try {
-            preparedStatement= connection.prepareStatement(update);
+            preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, seatNum);
             preparedStatement.setInt(2, employeeID);
 
@@ -183,6 +172,7 @@ public class BookingModel {
 
     }
 
+    //Deletes a booking for a specific employee
     public void deleteBooking(int employeeID) throws SQLException {
         String delete = "DELETE FROM bookings WHERE employee_id = ?";
         PreparedStatement preparedStatement = null;
@@ -197,6 +187,21 @@ public class BookingModel {
             connection.close();
             preparedStatement.close();
         }
-
     }
+
+    //TODO test if this can be safely deleted
+//    //Gets the user ID for use in other
+//    private int getUserID(String currentUser) {
+//        UserModel userModel1 = new UserModel();
+//        int userID = 0;
+//
+//        try {
+//            userID = userModel1.getEmployeeID(currentUser);
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//        }
+//        return userID;
+//    }
+
 }
