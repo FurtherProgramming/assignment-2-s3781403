@@ -4,7 +4,6 @@ import main.SQLConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminBookingModel extends BookingModel {
@@ -23,8 +22,6 @@ public class AdminBookingModel extends BookingModel {
     public void setNoLockdown(String chosenDate) throws SQLException {
         String update = "DELETE FROM bookings WHERE status= 'covid' AND bookedDate = ?";
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
 
         try {
             preparedStatement = connection.prepareStatement(update);
@@ -37,12 +34,6 @@ public class AdminBookingModel extends BookingModel {
             connection.close();
             preparedStatement.close();
         }
-
-    }
-
-    //Locks down all seats for the chosen date
-    public void setFullLockdown(String chosenDate) {
-        String up
 
     }
 
