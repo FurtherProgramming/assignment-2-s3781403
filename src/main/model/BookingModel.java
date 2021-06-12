@@ -23,18 +23,17 @@ public class BookingModel {
     }
 
     //Insert booking values into the database
-    public void addBooking(String currentUser, String seatNum, String bookingDateString) throws SQLException {
+    public void addBooking(int employeeID, String seatNum, String bookingDateString, String bookingType) throws SQLException {
         PreparedStatement preparedStatement = null;
         String update = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
 
-        int userID = getUserID(currentUser);
 
         try {
             preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, bookingDateString);
             preparedStatement.setString(2, seatNum);
-            preparedStatement.setInt(3, userID);
-            preparedStatement.setString(4, "booked");
+            preparedStatement.setInt(3, employeeID);
+            preparedStatement.setString(4, bookingType);
 
             preparedStatement.executeUpdate();
 
@@ -50,16 +49,16 @@ public class BookingModel {
 
     //TODO Move this to user model
     private int getUserID(String currentUser) {
-
+        UserModel userModel1 = new UserModel();
         int userID = 0; //TODO Should test for this before / after return somehow
+
         try {
-            userID = userModel.getEmployeeID(currentUser);
+            userID = userModel1.getEmployeeID(currentUser);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
         return userID;
-
     }
 
     //Selects seats that are booked due to 'covid' reason
@@ -125,7 +124,7 @@ public class BookingModel {
 
             resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 return true;
             }
 
@@ -150,7 +149,7 @@ public class BookingModel {
             preparedStatement.setInt(1, employeeID);
             resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 return resultSet.getString("bookedDate");
             }
         } catch (SQLException e) {
@@ -183,7 +182,7 @@ public class BookingModel {
     }
 
     public void deleteBooking(int employeeID) throws SQLException {
-        String delete= "DELETE FROM bookings WHERE employee_id = ?";
+        String delete = "DELETE FROM bookings WHERE employee_id = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
             preparedStatement.setInt(1, employeeID);

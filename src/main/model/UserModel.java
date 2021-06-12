@@ -34,10 +34,12 @@ public class UserModel {
 
 
             resultSet = preparedStatement.executeQuery();
-            employeeID = resultSet.getInt("id");
-//            if(resultSet.next()) {
-//
-//            }
+
+
+            while(resultSet.next()) {
+                employeeID = resultSet.getInt("id");
+                return employeeID;
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
