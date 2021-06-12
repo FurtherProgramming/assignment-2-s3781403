@@ -1,4 +1,4 @@
-package main.controller;
+package main.controller.admin;
 
 public class StaffManagementController {
 }
