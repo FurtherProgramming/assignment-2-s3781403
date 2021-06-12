@@ -77,8 +77,7 @@ public class AdminLockdownController implements Initializable {
     //Indicates that the user has or hasn't selected an appropriate date.
     private void selectedDate(DatePicker picker) {
         if (picker.getValue().isBefore(LocalDate.now())) {
-            warning.setText("Please select a date in the future");
-            warning.setVisible(true);
+            displayWarning("-fx-text-fill: red","Please select a date in the future", true);
             btnOptionOne.setDisable(true);
             btnOptionTwo.setDisable(true);
         } else {
@@ -100,7 +99,7 @@ public class AdminLockdownController implements Initializable {
         } else if (selectedItem.getId().equals("menuFullLock") && !hasBookings(chosenDate)) {
             setFullLockdown();
         } else {
-            displayWarning("-fx-text-fill: red", "There is already covid bookings for this date", true);
+            displayWarning("-fx-text-fill: red", "Unable to apply lockdown", true);
         }
 
     }
