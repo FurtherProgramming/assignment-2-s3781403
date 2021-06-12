@@ -38,7 +38,7 @@ public class BookingThreeController implements Initializable {
     public void createBooking(ActionEvent actionEvent) throws SQLException, IOException {
         System.out.println("----------------------\n Booking added \n User: " + Main.getCurrentUser()
                 + "\n Seat: " + BookingTwoController.getSeatNum()
-                + "\n Date: " + BookingController.getTempBookingDateString()
+                + "\n Date: " + BookingModel.getTempBookingDate().toString()
                 +"\n----------------------\n");
 
         bookingModel.addBooking(user, bookedSeat, bookedDate);
@@ -65,7 +65,7 @@ public class BookingThreeController implements Initializable {
 
     //Could overload to give ability to insert values at will
     private void setBookingValues() {
-        bookedDate = BookingController.getTempBookingDateString();
+        bookedDate = BookingModel.getTempBookingDate().toString();
         bookedSeat = BookingTwoController.getSeatNum();
         user = Main.getCurrentUser();
     }

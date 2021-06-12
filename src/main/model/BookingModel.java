@@ -6,10 +6,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
 public class BookingModel {
+
+    public static LocalDate tempBookingDate;
+
 
     Connection connection;
     UserModel userModel = new UserModel();
@@ -20,6 +24,15 @@ public class BookingModel {
         if (connection == null) {
             System.exit(1);
         }
+    }
+
+    public static void setTempBookingDate(LocalDate selectedDate) {
+        tempBookingDate = selectedDate;
+
+    }
+
+    public static LocalDate getTempBookingDate() {
+        return tempBookingDate;
     }
 
     public void addBooking(String currentUser, String seatNum, String bookingDateString) throws SQLException {

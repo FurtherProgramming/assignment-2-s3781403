@@ -37,7 +37,8 @@ public class BookingController implements Initializable {
     //TODO move all temporary variables from their controllers into the model where they belong
 
     public static String getTempBookingDateString() {
-        return tempBookingDate.toString();
+//        return bookingModel.tempBookingDate.toString();
+        return null;
     }
 
     @Override
@@ -82,9 +83,9 @@ public class BookingController implements Initializable {
     //TODO add multiple labels for different warnings for correct styling
     public void goBookingTwo(ActionEvent actionEvent) throws IOException {
 //        bookingModel.setBookedDate(tempBookingDate);
-        if (tempBookingDate != null && tempBookingDate.isEqual(LocalDate.now()) || tempBookingDate.isAfter(LocalDate.now())) {
+        if (BookingModel.getTempBookingDate() != null && BookingModel.getTempBookingDate().isEqual(LocalDate.now()) || BookingModel.getTempBookingDate().isAfter(LocalDate.now())) {
             SceneController.drawScene("ui/staff/booking_page_2.fxml");
-        } else if (tempBookingDate.isBefore(LocalDate.now())) {
+        } else if (BookingModel.getTempBookingDate().isBefore(LocalDate.now())) {
             labelWarning.setText("Please select a date in the future!");
             labelWarning.setVisible(true);
         } else {
@@ -95,9 +96,10 @@ public class BookingController implements Initializable {
 
     //For later bookings
     public void setBookingDate(ActionEvent actionEvent) {
-        tempBookingDate = bookingDate.getValue();
+        BookingModel.setTempBookingDate(bookingDate.getValue());
     }
 
+    //Fix this.
     public static void removeTempDate() {
         tempBookingDate = null;
     }
