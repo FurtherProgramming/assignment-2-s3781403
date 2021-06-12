@@ -2,7 +2,7 @@
 
 ------
 
-###Course: COSC2391 (Further Programming)
+**Course: COSC2391 (Further Programming)**
 
 **Name:** Oliver Hale
 
@@ -11,20 +11,24 @@
 ------
 
 ###Contents
+
 1. <a href="#projectdescription">Project Description</a>
 2. <a href="#runproject">How to run the project</a>
 3. <a href="#unimfeatures">Unimplemented Features / Bugs</a>
 4. <a href="#designchanges">Design change justifications</a>
-5. <a href="challenges">Challenges faced / lessons learned</a>
+5. <a href="#challenges">Challenges faced / lessons learned</a>
 
 ------
 <heading id="projectdescription"></heading>
 ##Project Description
+
 This project contains a JavaFX application designed to allow users to book desks at their workplace and create accounts. It also allows 
 admins to monitor and change booking information and user/employee information. 
 
 It has features for the following:
+
 ####General features:
+
 * Login - (Redirects user based on role)
 * Users cannot sit in the same seat twice in a row
 
@@ -41,7 +45,9 @@ It has features for the following:
 * Generate reports
    * Can generate a CSV report of bookings (based on date)
    * Can generate a CSV report of all employee information
+    
 ####Staff Features
+
 * Register an account (of type staff only)
 * Book a seat for a certain date
   * Can't book for past dates
@@ -53,6 +59,7 @@ It has features for the following:
 ------
 <heading id="runproject"></heading>
 ##How to run the project
+
 **WARNING**: This project has a dependency on the SQLite JDBC to function. Specifically, you require **sqlite-jdbc-3.34.0**.
 
 Place sqlite-jdbc-3.34.0.jar under lib in your project structure, or use intelliJ ideas project structure under file, project structure, libraries, to add the file.
@@ -65,6 +72,7 @@ The project is running using java 8 and javaFX 8.
 For your convenience, there are a few employee/admin accounts already created. Their details are:
 
 ###Account Information
+
 ######Admin
 * **Username:** admin
 * **Password**: admin
@@ -75,6 +83,7 @@ For your convenience, there are a few employee/admin accounts already created. T
 
 I recommend changing these login details if you plan on using project for anything other than personal/academic use.
 It would also be wise to enable encryption of passwords and secret answers (if I haven't implemented that feature upon final submission.)
+
 ###Examples of running project
 
 Pictures / Images of the project structure and a few examples of the UI will be given.
@@ -82,6 +91,7 @@ Pictures / Images of the project structure and a few examples of the UI will be 
 ------
 <heading id="unimfeatures"></heading>
 ##Unimplemented Features so far (Edit before submit)
+
 * Reset password
 * 48 hour test case for modifying bookings
 * Test classes and cases for all classes
