@@ -11,15 +11,20 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="189.0" prefWidth="361.0" VBox.vgrow="ALWAYS">
          <children>
-            <Button fx:id="confirm" layoutX="195.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Confirm" />
-            <Button fx:id="cancel" layoutX="47.0" layoutY="136.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="80.0" text="Cancel" />
-            <Label layoutX="99.0" layoutY="14.0" prefHeight="37.0" prefWidth="158.0" text="Confirm changes?">
+            <Button fx:id="confirm" layoutX="197.0" layoutY="143.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Confirm" />
+            <Button fx:id="cancel" layoutX="51.0" layoutY="143.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="80.0" text="Cancel" />
+            <Label alignment="CENTER" layoutX="91.0" layoutY="14.0" prefHeight="37.0" prefWidth="158.0" text="Delete Booking?">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <Separator layoutX="70.0" layoutY="50.0" prefWidth="200.0" />
-            <Label fx:id="message" alignment="CENTER" layoutX="50.0" layoutY="71.0" prefHeight="20.0" prefWidth="239.0" text="message">
+            <Label fx:id="message" alignment="CENTER" layoutX="51.0" layoutY="61.0" prefHeight="20.0" prefWidth="239.0" text="Really delete your booking?">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="message1" alignment="CENTER" layoutX="50.0" layoutY="105.0" prefHeight="20.0" prefWidth="239.0" text="This action can't be undone" textFill="RED">
                <font>
                   <Font size="14.0" />
                </font>

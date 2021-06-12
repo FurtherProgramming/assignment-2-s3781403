@@ -16,7 +16,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-//TODO move temp var into model
+/*
+    TODO Extend a superclass
+      - move temporary variables into the model to be accessed by all relevant classes.
+
+ */
 public class BookingTwoController implements Initializable {
 
     private static String seatNum;
@@ -60,7 +64,7 @@ public class BookingTwoController implements Initializable {
             e.printStackTrace();
         }
         for (int i = 0; i < 20; i++) {
-            if (previousSeat.equals(seatsArray.get(i).getId().trim())) {
+            if (previousSeat!=null && previousSeat.equals(seatsArray.get(i).getId().trim())) {
                 seatsArray.get(i).setStyle("-fx-background-color: maroon");
                 seatsArray.get(i).setDisable(true);
             }
