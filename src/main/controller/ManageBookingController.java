@@ -19,7 +19,8 @@ import java.util.ResourceBundle;
 
 /*
     TODO Extend a superclass that handles button creation and drawing.
-     Could potentially draw an entirely new window to select seats...
+     - Add Check that it isn't 48 hours before
+
  */
 
 public class ManageBookingController implements Initializable {
@@ -53,10 +54,19 @@ public class ManageBookingController implements Initializable {
             drawBookingDate();
             initializeUnavailableSeats();
         } else {
-//            disableTable();
-//            updateLabels();
+            disableTable();
         }
 
+    }
+
+    private void disableTable() {
+        for (Button button : seatsArray) {
+            button.setDisable(true);
+        }
+        confirmChange.setDisable(true);
+        deleteBooking.setDisable(true);
+        noBookingsLabel.setText("You have no bookings");
+        noBookingsLabel.setVisible(true);
     }
 
     private void initializeUnavailableSeats() {
@@ -138,12 +148,22 @@ public class ManageBookingController implements Initializable {
             //If alert box returns true: delete the entry from the database
             SceneController.AlertBox.draw("Delete Booking", "Really delete booking?");
             if (SceneController.AlertBox.answer) {
-                System.out.println("Delete booking");
-
+                deleteEmployeeBooking();
+                goLandingPage();
             }
         });
 
         returnHome.setOnAction((ActionEvent e) -> goLandingPage());
+    }
+
+    private void deleteEmployeeBooking() {
+        BookingModel bookingModel1 = new BookingModel();
+        try {
+            bookingModel1.deleteBooking(employeeID);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void updateEmployeeSeating() {

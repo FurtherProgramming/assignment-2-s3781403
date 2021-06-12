@@ -165,11 +165,10 @@ public class BookingModel {
     }
 
     public void updateBookingSeat(int employeeID, String seatNum) throws SQLException {
-        PreparedStatement preparedStatement = null;
+
         String update = "UPDATE bookings SET seat = ? WHERE employee_id = ?";
 
-        try {
-            preparedStatement=connection.prepareStatement(update);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
             preparedStatement.setString(1, seatNum);
             preparedStatement.setInt(2, employeeID);
 
@@ -179,7 +178,20 @@ public class BookingModel {
             e.printStackTrace();
         } finally {
             connection.close();
-            preparedStatement.close();
+        }
+
+    }
+
+    public void deleteBooking(int employeeID) throws SQLException {
+        String delete= "DELETE FROM bookings WHERE employee_id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
+            preparedStatement.setInt(1, employeeID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connection.close();
         }
 
     }

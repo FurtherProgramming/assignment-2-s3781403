@@ -153,4 +153,21 @@ public class UserModel {
         return firstName;
     }
 
+    public void deletePreviousSeat(int employeeID) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        String query = "UPDATE Employees SET previousseat = ? WHERE id = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setNull(1, java.sql.Types.INTEGER);
+            preparedStatement.setInt(2, employeeID);
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            preparedStatement.close();
+        }
+
+    }
 }
