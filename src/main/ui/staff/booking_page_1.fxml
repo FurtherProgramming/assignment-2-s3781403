@@ -70,7 +70,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelWarning" layoutX="204.0" layoutY="163.0" text="Please select a date before moving on!" textFill="RED" visible="false" />
+            <Label fx:id="labelWarning" alignment="CENTER" layoutX="204.0" layoutY="163.0" prefHeight="17.0" prefWidth="224.0" text="Please select a date before moving on!" textFill="RED" visible="false" />
          </children>
     </AnchorPane>
   </children>

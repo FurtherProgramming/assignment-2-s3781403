@@ -32,13 +32,24 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="446.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="446.0" prefWidth="641.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -116,13 +127,9 @@
                   <PasswordField layoutX="443.0" layoutY="113.0" />
                   <PasswordField layoutX="442.0" layoutY="154.0" />
                   <Button defaultButton="true" layoutX="492.0" layoutY="202.0" mnemonicParsing="false" text="Submit changes" />
-                  <SplitMenuButton layoutX="118.0" layoutY="194.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Employee Role">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Staff" />
-                      <MenuItem mnemonicParsing="false" text="Admin" />
-                    </items>
-                  </SplitMenuButton>
                   <Button cancelButton="true" layoutX="419.0" layoutY="203.0" mnemonicParsing="false" text="Cancel" />
+                  <RadioButton layoutX="129.0" layoutY="199.0" mnemonicParsing="false" text="Staff" />
+                  <RadioButton layoutX="200.0" layoutY="199.0" mnemonicParsing="false" text="Admin" />
                </children>
             </Group>
             <Text layoutX="163.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new employee information into the boxes below" />

@@ -22,6 +22,7 @@ public class BookingModel {
         }
     }
 
+    //Insert booking values into the database
     public void addBooking(String currentUser, String seatNum, String bookingDateString) throws SQLException {
         PreparedStatement preparedStatement = null;
         String update = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
@@ -61,6 +62,7 @@ public class BookingModel {
 
     }
 
+    //Selects seats that are booked due to 'covid' reason
     public ArrayList<String> selectCovidSeats(String bookedDate) throws SQLException {
         ArrayList<String> lockedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -85,6 +87,7 @@ public class BookingModel {
         return lockedSeats;
     }
 
+    //Selects any seats booked by a staff member from the bookings table
     public ArrayList<String> selectBookedSeats(String bookedDate) throws SQLException {
         ArrayList<String> bookedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -110,6 +113,7 @@ public class BookingModel {
         return bookedSeats;
     }
 
+    //Checks if the user associated with the employeeID has a booking.
     public boolean checkUserBooking(int employeeID) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -136,4 +140,59 @@ public class BookingModel {
         return false;
     }
 
+    public String getUserBookingDate(int employeeID) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT bookedDate FROM bookings WHERE employee_id = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, employeeID);
+            resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()) {
+                return resultSet.getString("bookedDate");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            preparedStatement.close();
+            resultSet.close();
+        }
+        return null;
+    }
+
+    public void updateBookingSeat(int employeeID, String seatNum) throws SQLException {
+
+        String update = "UPDATE bookings SET seat = ? WHERE employee_id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+            preparedStatement.setString(1, seatNum);
+            preparedStatement.setInt(2, employeeID);
+
+            preparedStatement.executeUpdate();
+            System.out.println("did it");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connection.close();
+        }
+
+    }
+
+    public void deleteBooking(int employeeID) throws SQLException {
+        String delete= "DELETE FROM bookings WHERE employee_id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
+            preparedStatement.setInt(1, employeeID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connection.close();
+        }
+
+    }
 }

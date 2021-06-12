@@ -42,7 +42,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="401.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="401.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ManageBookingController">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -87,26 +87,27 @@
             <Group layoutX="13.0" layoutY="129.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7d7d73b" height="230.0" layoutX="1.0" layoutY="2.0" stroke="BLACK" strokeType="INSIDE" width="504.0" />
-                  <Button layoutX="23.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 1" />
-                  <Button layoutX="106.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 2" />
-                  <Button layoutX="263.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 4" />
-                  <Button layoutX="336.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 5" />
-                  <Button layoutX="23.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 7" />
-                  <Button layoutX="23.0" layoutY="91.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 9" />
-                  <Button layoutX="23.0" layoutY="122.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 11" />
-                  <Button layoutX="23.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 15" />
-                  <Button layoutX="336.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 19" />
-                  <Button layoutX="263.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 18" />
-                  <Button layoutX="186.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 3" />
-                  <Button layoutX="106.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 16" />
-                  <Button layoutX="186.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 17" />
-                  <Button layoutX="23.0" layoutY="153.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 13" />
-                  <Button layoutX="422.0" layoutY="17.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 6" />
-                  <Button layoutX="422.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 8" />
-                  <Button layoutX="422.0" layoutY="91.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 10" />
-                  <Button layoutX="422.0" layoutY="122.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 12" />
-                  <Button layoutX="422.0" layoutY="195.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 20" />
-                  <Button layoutX="422.0" layoutY="153.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Seat 14" />
+                   <Button fx:id="seat1" layoutX="28.0" layoutY="24.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 1" />
+                   <Button fx:id="seat2" layoutX="106.0" layoutY="24.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 2" />
+                   <Button fx:id="seat3" layoutX="186.0" layoutY="24.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 3" />
+                   <Button fx:id="seat4" layoutX="263.0" layoutY="24.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 4" />
+                   <Button fx:id="seat5" layoutX="336.0" layoutY="24.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 5" />
+                   <Button fx:id="seat6" layoutX="422.0" layoutY="24.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 6" />
+                   <Button fx:id="seat7" layoutX="28.0" layoutY="67.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 7" />
+                   <Button fx:id="seat8" layoutX="422.0" layoutY="67.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 8" />
+                   <Button fx:id="seat9" layoutX="28.0" layoutY="98.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 9" />
+                   <Button fx:id="seat10" layoutX="422.0" layoutY="98.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 10" />
+                   <Button fx:id="seat11" layoutX="28.0" layoutY="129.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 11" />
+                   <Button fx:id="seat12" layoutX="422.0" layoutY="129.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 12" />
+                   <Button fx:id="seat13" layoutX="28.0" layoutY="160.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 13" />
+                   <Button fx:id="seat14" layoutX="422.0" layoutY="160.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 14" />
+                   <Button fx:id="seat15" layoutX="28.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 15" />
+                   <Button fx:id="seat16" layoutX="106.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 16" />
+                   <Button fx:id="seat17" layoutX="186.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 17" />
+                   <Button fx:id="seat18" layoutX="263.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 18" />
+                   <Button fx:id="seat19" layoutX="336.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 19" />
+                   <Button fx:id="seat20" layoutX="422.0" layoutY="202.0" mnemonicParsing="false" onAction="#chooseSeat" prefHeight="25.0" prefWidth="61.0" text="Seat 20" />
+                   <Text layoutX="185.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a seat to select it" />
                </children>
             </Group>
       </children>

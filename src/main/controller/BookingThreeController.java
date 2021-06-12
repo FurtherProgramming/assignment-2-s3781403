@@ -27,6 +27,7 @@ public class BookingThreeController implements Initializable {
 
     private String bookedDate, bookedSeat, user;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setBookingValues();
