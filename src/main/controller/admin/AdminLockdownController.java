@@ -35,6 +35,12 @@ public class AdminLockdownController implements Initializable {
     private String chosenDate;
     private ArrayList<String> covidLockdownSeats = new ArrayList<>();
 
+    /*
+        TODO: When adding a covid lockdown, must also remove any booking in a seat that is already occupied.
+     */
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initiateControls();
@@ -69,6 +75,7 @@ public class AdminLockdownController implements Initializable {
             btnOptionOne.setDisable(true);
             btnOptionTwo.setDisable(true);
         } else {
+            warning.setVisible(false);
             btnOptionOne.setDisable(false);
             btnOptionTwo.setDisable(false);
             chosenDate = picker.getValue().toString();
@@ -80,7 +87,7 @@ public class AdminLockdownController implements Initializable {
         UserModel userModel = new UserModel();
 
         if (selectedItem.getId().equals("menuNoCond")) {
-            adminBookingModel.setNoLockdown(chosenDate);
+            clearCovidSeats();
         } else if (selectedItem.getId().equals("menuCovid")) {
             setCovidLockedSeats();
         } else if (selectedItem.getId().equals("menuFullLock")) {
@@ -89,7 +96,19 @@ public class AdminLockdownController implements Initializable {
             warning.setText("Invalid Selection on Menu Item");
         }
 
-        // TODO - Code this after adding datepicker
+
+    }
+
+    //TODO: there needs to be a check here to see if there ARE actually any seats.
+    //TODO: write skeleton code in full
+    private void clearCovidSeats() {
+        AdminBookingModel adminBookingModel1 = new AdminBookingModel();
+
+        try {
+            adminBookingModel1.setNoLockdown(chosenDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setCovidLockedSeats() {
@@ -102,12 +121,11 @@ public class AdminLockdownController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         // TODO Add if check for already have a booking
-
-        admBookModel.checkBooking(chosenDate);
-
         //Loops through the pre-assigned covid spacing seats and adds them to a booking.
         //If don't create new bookingModel every time, the close() statements in the model cause errors
+        admBookModel.checkBooking(chosenDate);
         for (String seat : covidLockdownSeats) {
             AdminBookingModel adminBookingModel = new AdminBookingModel();
             try {

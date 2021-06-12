@@ -45,6 +45,7 @@ public class BookingController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setEmployeeID();
         checkUserHasBooking();
+        tempBookingDate=null;
     }
 
     private void checkUserHasBooking() {
@@ -88,7 +89,7 @@ public class BookingController implements Initializable {
         } else if (tempBookingDate.isBefore(LocalDate.now())) {
             labelWarning.setText("Please select a date in the future!");
             labelWarning.setVisible(true);
-        } else {
+        } else if (tempBookingDate==null){
             labelWarning.setVisible(true);
         }
 
