@@ -39,7 +39,6 @@ public class AdminRegisterController extends RegistrationController implements I
     public void initialize(URL location, ResourceBundle resources) {
         initializeButtons();
         initializeMenu();
-
     }
 
     private void initializeButtons() {
@@ -62,42 +61,45 @@ public class AdminRegisterController extends RegistrationController implements I
     private void beginRegistration() {
         RegistrationModel registrationModel = new RegistrationModel();
         if(checkInputs()) {
+            System.out.println("received inputs");
             try {
                 if(registrationModel.registration(Integer.parseInt(txtFieldArubID.getText()), txtFieldFirstName.getText(),txtFieldLastName.getText(), txtFieldUser.getText(), passFieldPassOne.getText(), selectedRole, txtFieldSecQuestion.getText(), txtFieldSecAnswer.getText())) {
-                    System.out.println("it was supposed to work!");
+                    generateWarning("New " + selectedRole + " created", "-fx-text-fill: green");
+                } else {
+                    generateWarning("Failed to create an account", "-fx-text-fill:red");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         } else {
-            warning.setText("Failed to create an account");
-            warning.setStyle("-fx-text-fill:red");
-            warning.setVisible(true);
+            generateWarning("Fill out all inputs", "-fx-text-fill:red");
         }
+    }
+
+    private void generateWarning(String text, String colour) {
+        warning.setText(text);
+        warning.setStyle("-fx-text-fill:red");
+        warning.setVisible(true);
     }
 
 
     private boolean checkInputs() {
         if (checkAllFilled()) {
             if (checkPasswordsMatch()) {
-                warning.setStyle("-fx-text-fill: green");
-                warning.setText("Passwords match");
+                generateWarning("Passwords match", "-fx-text-fill: green");
                 return true;
             } else {
-                warning.setStyle("-fx-text-fill: red");
-                warning.setText("Passwords do not match");
-                warning.setVisible(true);
+                generateWarning("Passwords do not match", "-fx-text-fill: red");
                 return false;
             }
         } else {
-            warning.setText("Please fill out ALL values");
-            warning.setVisible(true);
+            generateWarning("Please fill out ALL values", "-fx-text-fill: red");
             return false;
         }
     }
 
     private boolean checkPasswordsMatch() {
-        if (passFieldPassOne.toString().equals(passFieldPassTwo.toString())) {
+        if (passFieldPassOne.getText().equals(passFieldPassTwo.getText())) {
             return true;
         } else {
             return false;
@@ -121,9 +123,8 @@ public class AdminRegisterController extends RegistrationController implements I
                 || txtFieldSecAnswer.getText().isEmpty()
                 || txtFieldSecQuestion.getText().isEmpty()
                 || txtFieldUser.getText().isEmpty()
-                || selectedRole.isEmpty()) {
-            warning.setStyle("-fx-text-fill: red");
-            warning.setText("Please fill ALL fields");
+                || selectedRole.isEmpty() || selectedRole == null) {
+            generateWarning("Please fill out ALL values", "-fx-text-fill: red");
             return false;
         } else {
             return true;

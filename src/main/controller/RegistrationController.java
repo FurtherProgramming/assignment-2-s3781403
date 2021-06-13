@@ -18,7 +18,6 @@ public class RegistrationController implements Initializable {
 
     public RegistrationModel registrationModel = new RegistrationModel();
 
-
     //Creates variables from the fxml registration file
     @FXML
     private TextField txtEmployeeID, txtFirstName, txtLastname, txtUsername;
