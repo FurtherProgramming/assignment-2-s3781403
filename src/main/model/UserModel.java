@@ -49,8 +49,6 @@ public class UserModel {
             connection.close();
         }
         return employeeID;
-
-
     }
 
     public String checkUserRole(String username) throws SQLException {
@@ -128,7 +126,7 @@ public class UserModel {
         }
     }
 
-    public String getEmployeeName(String username) throws SQLException {
+    public String getEmployeeNameByUsername(String username) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String query = "SELECT firstname FROM Employees WHERE username = ?";
@@ -153,6 +151,32 @@ public class UserModel {
             preparedStatement.close();
         }
         return firstName;
+    }
+
+    public String getFullNameByID(int employeeID) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT firstname, surname FROM Employees WHERE id = ?";
+        String firstName = null;
+        String lastName = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, employeeID);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                firstName = resultSet.getString("firstname");
+                lastName = resultSet.getString("surname");
+            }
+        } catch (SQLException e) {
+            System.out.println("getEmployeeNameByID(): " + e.getMessage());
+            e.printStackTrace();
+        }
+        return (firstName + " " + lastName);
+
+
     }
 
     public void deletePreviousSeat(int employeeID) throws SQLException {

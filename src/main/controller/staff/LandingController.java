@@ -40,7 +40,7 @@ public class LandingController implements Initializable {
 
     private void displayEmployeeName() {
         try {
-            labelEmplName.setText("Welcome to Arub Hotdesking, " + userModel.getEmployeeName(Main.getCurrentUser()));
+            labelEmplName.setText("Welcome to Arub Hotdesking, " + userModel.getEmployeeNameByUsername(Main.getCurrentUser()));
         } catch (SQLException e) {
             e.printStackTrace();
         }

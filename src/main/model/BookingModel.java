@@ -27,7 +27,6 @@ public class BookingModel {
         PreparedStatement preparedStatement = null;
         String update = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
 
-
         try {
             preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, bookingDateString);
@@ -79,7 +78,7 @@ public class BookingModel {
         ArrayList<String> bookedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'booked'";
+        String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'booked' OR status = 'confirmed'";
 
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -162,7 +161,6 @@ public class BookingModel {
             preparedStatement.setInt(2, employeeID);
 
             preparedStatement.executeUpdate();
-            System.out.println("did it");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

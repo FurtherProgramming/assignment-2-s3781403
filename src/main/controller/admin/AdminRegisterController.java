@@ -60,10 +60,10 @@ public class AdminRegisterController extends RegistrationController implements I
 
     private void beginRegistration() {
         RegistrationModel registrationModel = new RegistrationModel();
-        if(checkInputs()) {
+        if (checkInputs()) {
             System.out.println("received inputs");
             try {
-                if(registrationModel.registration(Integer.parseInt(txtFieldArubID.getText()), txtFieldFirstName.getText(),txtFieldLastName.getText(), txtFieldUser.getText(), passFieldPassOne.getText(), selectedRole, txtFieldSecQuestion.getText(), txtFieldSecAnswer.getText())) {
+                if (registrationModel.registration(Integer.parseInt(txtFieldArubID.getText()), txtFieldFirstName.getText(), txtFieldLastName.getText(), txtFieldUser.getText(), passFieldPassOne.getText(), selectedRole, txtFieldSecQuestion.getText(), txtFieldSecAnswer.getText())) {
                     generateWarning("New " + selectedRole + " created", "-fx-text-fill: green");
                 } else {
                     generateWarning("Failed to create an account", "-fx-text-fill:red");
@@ -78,7 +78,7 @@ public class AdminRegisterController extends RegistrationController implements I
 
     private void generateWarning(String text, String colour) {
         warning.setText(text);
-        warning.setStyle("-fx-text-fill:red");
+        warning.setStyle(colour);
         warning.setVisible(true);
     }
 
