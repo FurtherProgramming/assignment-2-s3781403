@@ -22,19 +22,17 @@ public class BookingModel {
         }
     }
 
-    //Insert booking values into the database
-    public void addBooking(String currentUser, String seatNum, String bookingDateString) throws SQLException {
+    //Adds all booking information into the database
+    public void addBooking(int employeeID, String seatNum, String bookingDateString, String bookingType) throws SQLException {
         PreparedStatement preparedStatement = null;
         String update = "INSERT INTO bookings(bookedDate, seat, employee_id, status) VALUES(?, ?, ?, ?)";
-
-        int userID = getUserID(currentUser);
 
         try {
             preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, bookingDateString);
             preparedStatement.setString(2, seatNum);
-            preparedStatement.setInt(3, userID);
-            preparedStatement.setString(4, "booked");
+            preparedStatement.setInt(3, employeeID);
+            preparedStatement.setString(4, bookingType);
 
             preparedStatement.executeUpdate();
 
@@ -48,21 +46,7 @@ public class BookingModel {
 
     }
 
-    //TODO Move this to user model
-    private int getUserID(String currentUser) {
-
-        int userID = 0; //TODO Should test for this before / after return somehow
-        try {
-            userID = userModel.getEmployeeID(currentUser);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return userID;
-
-    }
-
-    //Selects seats that are booked due to 'covid' reason
+    //Selects seats that are booked due to 'covid' reason, returns them as an arraylist
     public ArrayList<String> selectCovidSeats(String bookedDate) throws SQLException {
         ArrayList<String> lockedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
@@ -82,17 +66,19 @@ public class BookingModel {
             e.printStackTrace();
         } finally {
             //closing connection here causes select booked seats to close because of the nested loops in B2 calls
+            //It effectively closes itself afterward -> you can fix this by using different models for each call
+            //Becomes an issue if selectCovidSeats is called without selectBookedSeats being called after.
             //TODO solve this later. Not a now problem -> doesn't cause any issues (that I know of)
         }
         return lockedSeats;
     }
 
-    //Selects any seats booked by a staff member from the bookings table
+    //Selects any seats booked on a specific date, returns them as a list.
     public ArrayList<String> selectBookedSeats(String bookedDate) throws SQLException {
         ArrayList<String> bookedSeats = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'booked'";
+        String query = "SELECT seat FROM bookings WHERE bookedDate = ? AND status = 'booked' OR status = 'confirmed'";
 
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -125,10 +111,9 @@ public class BookingModel {
 
             resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 return true;
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -140,6 +125,7 @@ public class BookingModel {
         return false;
     }
 
+    //Gets the date that a user has booked a seat (if they have)
     public String getUserBookingDate(int employeeID) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -150,7 +136,7 @@ public class BookingModel {
             preparedStatement.setInt(1, employeeID);
             resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 return resultSet.getString("bookedDate");
             }
         } catch (SQLException e) {
@@ -164,35 +150,41 @@ public class BookingModel {
         return null;
     }
 
+    //Updates a specific employees seat
     public void updateBookingSeat(int employeeID, String seatNum) throws SQLException {
-
         String update = "UPDATE bookings SET seat = ? WHERE employee_id = ?";
+        PreparedStatement preparedStatement = null;
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(update)) {
+        try {
+            preparedStatement = connection.prepareStatement(update);
             preparedStatement.setString(1, seatNum);
             preparedStatement.setInt(2, employeeID);
 
             preparedStatement.executeUpdate();
-            System.out.println("did it");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             connection.close();
+            preparedStatement.close();
         }
 
     }
 
+    //Deletes a booking for a specific employee
     public void deleteBooking(int employeeID) throws SQLException {
-        String delete= "DELETE FROM bookings WHERE employee_id = ?";
+        String delete = "DELETE FROM bookings WHERE employee_id = ?";
+        PreparedStatement preparedStatement = null;
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
+        try {
+            preparedStatement = connection.prepareStatement(delete);
             preparedStatement.setInt(1, employeeID);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             connection.close();
+            preparedStatement.close();
         }
-
     }
+
 }

@@ -1,4 +1,4 @@
-package main.controller;
+package main.controller.staff;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import main.Main;
+import main.controller.SceneController;
 import main.model.BookingModel;
 import main.model.UserModel;
 
@@ -44,6 +45,7 @@ public class BookingController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         setEmployeeID();
         checkUserHasBooking();
+        tempBookingDate=null;
     }
 
     private void checkUserHasBooking() {
@@ -87,7 +89,7 @@ public class BookingController implements Initializable {
         } else if (tempBookingDate.isBefore(LocalDate.now())) {
             labelWarning.setText("Please select a date in the future!");
             labelWarning.setVisible(true);
-        } else {
+        } else if (tempBookingDate==null){
             labelWarning.setVisible(true);
         }
 

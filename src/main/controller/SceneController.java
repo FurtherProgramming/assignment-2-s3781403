@@ -24,9 +24,9 @@ public class SceneController {
         Main.getStage().show();
     }
 
-    static class AlertBox {
+    public static class AlertBox {
 
-        static boolean answer;
+        public static boolean answer;
 
         public static void draw(String title, String labelMsg) {
             Stage window = new Stage();

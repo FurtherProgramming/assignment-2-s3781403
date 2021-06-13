@@ -1,4 +1,4 @@
-package main.controller;
+package main.controller.staff;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.Main;
+import main.controller.SceneController;
 import main.model.BookingModel;
 import main.model.UserModel;
 
@@ -26,6 +27,7 @@ public class BookingThreeController implements Initializable {
     private Label bookingDate, seatNum, labelEmployee;
 
     private String bookedDate, bookedSeat, user;
+    private int employeeID;
 
 
     @Override
@@ -41,9 +43,10 @@ public class BookingThreeController implements Initializable {
                 + "\n Seat: " + BookingTwoController.getSeatNum()
                 + "\n Date: " + BookingController.getTempBookingDateString()
                 +"\n----------------------\n");
+        UserModel userModel1 = new UserModel();
 
-        bookingModel.addBooking(user, bookedSeat, bookedDate);
-        userModel.setPreviousSeat(bookedSeat);
+        bookingModel.addBooking(employeeID, bookedSeat, bookedDate, "booked");
+        userModel1.setPreviousSeat(bookedSeat);
         //Remove temporary variables from other controllers.
         BookingTwoController.removeSeatNum();
         BookingController.removeTempDate();
@@ -69,6 +72,11 @@ public class BookingThreeController implements Initializable {
         bookedDate = BookingController.getTempBookingDateString();
         bookedSeat = BookingTwoController.getSeatNum();
         user = Main.getCurrentUser();
+        try {
+            employeeID = userModel.getEmployeeID(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setLabels() {

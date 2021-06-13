@@ -1,4 +1,4 @@
-package main.controller;
+package main.controller.staff;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import main.Main;
+import main.controller.SceneController;
 import main.model.UserModel;
 
 import java.io.IOException;
@@ -39,7 +40,7 @@ public class LandingController implements Initializable {
 
     private void displayEmployeeName() {
         try {
-            labelEmplName.setText("Welcome to Arub Hotdesking, " + userModel.getEmployeeName(Main.getCurrentUser()));
+            labelEmplName.setText("Welcome to Arub Hotdesking, " + userModel.getEmployeeNameByUsername(Main.getCurrentUser()));
         } catch (SQLException e) {
             e.printStackTrace();
         }

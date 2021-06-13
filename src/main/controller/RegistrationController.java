@@ -18,7 +18,6 @@ public class RegistrationController implements Initializable {
 
     public RegistrationModel registrationModel = new RegistrationModel();
 
-
     //Creates variables from the fxml registration file
     @FXML
     private TextField txtEmployeeID, txtFirstName, txtLastname, txtUsername;
@@ -55,7 +54,6 @@ public class RegistrationController implements Initializable {
     public void Register(ActionEvent actionEvent) throws SQLException {
 
         checkRegistrationInputs(); //TODO: Code check all inputs are valid
-
         generateInputs();
 
         //Also want to add some additional checks here: password length, password strength, etc
@@ -79,7 +77,7 @@ public class RegistrationController implements Initializable {
 
     }
 
-    //Incomplete, just checking out what works.
+    //TODO complete this
     //Use lambdas calling multiple
     private boolean checkRegistrationInputs() {
         if (txtEmployeeID.getText().isEmpty()
@@ -91,10 +89,8 @@ public class RegistrationController implements Initializable {
                 || txtFirstPassword.getText().isEmpty()
                 || txtSecondPassword.getText().isEmpty()
                 || staffRole.getText().isEmpty()) {
-
             incorrectInputs.setVisible(true);
             return false;
-
         } else {
             return true;
         }

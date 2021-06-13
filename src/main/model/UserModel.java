@@ -34,10 +34,12 @@ public class UserModel {
 
 
             resultSet = preparedStatement.executeQuery();
-            employeeID = resultSet.getInt("id");
-//            if(resultSet.next()) {
-//
-//            }
+
+
+            while(resultSet.next()) {
+                employeeID = resultSet.getInt("id");
+                return employeeID;
+            }
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -47,15 +49,13 @@ public class UserModel {
             connection.close();
         }
         return employeeID;
-
-
     }
 
     public String checkUserRole(String username) throws SQLException {
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String query = "SELECT * FROM Employees WHERE username = ?";
+        String query = "SELECT role FROM Employees WHERE username = ?";
 
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -70,9 +70,9 @@ public class UserModel {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
-            resultSet.close();
             preparedStatement.close();
             connection.close();
+            resultSet.close();
         }
         return role;
     }
@@ -126,7 +126,7 @@ public class UserModel {
         }
     }
 
-    public String getEmployeeName(String username) throws SQLException {
+    public String getEmployeeNameByUsername(String username) throws SQLException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String query = "SELECT firstname FROM Employees WHERE username = ?";
@@ -151,6 +151,36 @@ public class UserModel {
             preparedStatement.close();
         }
         return firstName;
+    }
+
+    public String getFullNameByID(int employeeID) throws SQLException {
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String query = "SELECT firstname, surname FROM Employees WHERE id = ?";
+        String firstName = null;
+        String lastName = null;
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, employeeID);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                firstName = resultSet.getString("firstname");
+                lastName = resultSet.getString("surname");
+            }
+        } catch (SQLException e) {
+            System.out.println("getEmployeeNameByID(): " + e.getMessage());
+            e.printStackTrace();
+        } finally {
+            connection.close();
+            resultSet.close();
+            preparedStatement.close();
+        }
+        return (firstName + " " + lastName);
+
+
     }
 
     public void deletePreviousSeat(int employeeID) throws SQLException {
