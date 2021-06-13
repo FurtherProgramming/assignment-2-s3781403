@@ -40,7 +40,7 @@ public class AdminRegisterController extends RegistrationController implements I
         initializeButtons();
         initializeMenu();
     }
-
+    //Both initialize set actions for when the user clicks something
     private void initializeButtons() {
         btnCancel.setOnAction((ActionEvent e) -> redirect("ui/admin/admin_landingpage.fxml"));
         btnReturnToMenu.setOnAction((ActionEvent e) -> redirect("ui/admin/admin_landingpage.fxml"));
@@ -58,6 +58,7 @@ public class AdminRegisterController extends RegistrationController implements I
         menuSelectRole.setText(menuItem.getText());
     }
 
+    //Checks if a register is acceptable and if it is then it creates an account.
     private void beginRegistration() {
         RegistrationModel registrationModel = new RegistrationModel();
         if (checkInputs()) {

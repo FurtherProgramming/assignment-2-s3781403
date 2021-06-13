@@ -41,6 +41,7 @@ public class AdminDeactivateController implements Initializable {
         groupEmployeeDetails.setVisible(false);
     }
 
+    //Creates combo box options based on a list taken from the model (employeeID)
     private void initiateComboBoxOptions() {
         StaffManagementModel staffManagementModel1 = new StaffManagementModel();
         comboBoxID.setVisibleRowCount(6);
@@ -52,6 +53,7 @@ public class AdminDeactivateController implements Initializable {
         comboBoxID.getItems().addAll(comboOptions);
     }
 
+    //Displays all relevant user info
     private void displayUserInformation() {
         groupEmployeeDetails.setVisible(true);
         setNameLabel();
@@ -100,6 +102,7 @@ public class AdminDeactivateController implements Initializable {
         btnCancel.setOnAction((ActionEvent e) -> redirect("ui/admin/admin_landingpage.fxml"));
     }
 
+    //Method to delete an employee and update labels/buttons on the page
     private void deactivateEmployee() {
         StaffManagementModel staffManagementModel = new StaffManagementModel();
         SceneController.AlertBox.draw("Delete Employee", "This action cannot be undone");

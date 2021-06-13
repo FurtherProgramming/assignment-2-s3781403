@@ -48,6 +48,7 @@ public class BookingController implements Initializable {
         tempBookingDate=null;
     }
 
+    //Checks if the current user has a booking
     private void checkUserHasBooking() {
         try {
             userHasBooking = bookingModel.checkUserBooking(employeeID);
@@ -62,6 +63,7 @@ public class BookingController implements Initializable {
         }
     }
 
+    //Sets this classes employeeID to the logged in users ID
     private void setEmployeeID() {
         try {
             employeeID = userModel.getEmployeeID(Main.getCurrentUser());

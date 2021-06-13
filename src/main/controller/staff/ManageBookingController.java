@@ -61,6 +61,7 @@ public class ManageBookingController implements Initializable {
 
     }
 
+    //Disables ability to use table.
     private void disableTable() {
         for (Button button : seatsArray) {
             button.setDisable(true);
@@ -70,7 +71,8 @@ public class ManageBookingController implements Initializable {
         noBookingsLabel.setText("You have no bookings");
         noBookingsLabel.setVisible(true);
     }
-
+    //Initialize unavailable seats and colourbookingtable should be called from a superclass instead
+    //tells the page which seats aren't available by pulling from database
     private void initializeUnavailableSeats() {
         BookingModel bookingModel3 = new BookingModel();
         ArrayList<String> covidLockedSeats = new ArrayList<>();
@@ -84,6 +86,7 @@ public class ManageBookingController implements Initializable {
         colourBookingTable(covidLockedSeats, bookedSeats);
     }
 
+    //Sets the color of certain seats (covid or booked)
     private void colourBookingTable(ArrayList<String> covidLockedSeats, ArrayList<String> bookedSeats) {
         for (String covidLockedSeat : covidLockedSeats) {
             for (Button button : seatsArray) {
@@ -103,6 +106,7 @@ public class ManageBookingController implements Initializable {
         }
     }
 
+    //Sets the employeeID in the class (should be elsewhere (model))
     private void setEmployeeID() {
         try {
             employeeID = userModel.getEmployeeID(Main.getCurrentUser());
@@ -110,7 +114,7 @@ public class ManageBookingController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    //Updates the label with the booking date
     private void drawBookingDate() {
         try {
             bookingDate = bookingModel.getUserBookingDate(employeeID);
@@ -131,6 +135,7 @@ public class ManageBookingController implements Initializable {
 
     }
 
+    //Creates actions for the buttons on the page
     private void initializeButtons() {
         confirmChange.setOnAction((ActionEvent e) -> {
             if (seatNum != null) {
@@ -158,6 +163,7 @@ public class ManageBookingController implements Initializable {
         returnHome.setOnAction((ActionEvent e) -> goLandingPage());
     }
 
+    //Deletes an employee booking
     private void deleteEmployeeBooking() {
         BookingModel bookingModel1 = new BookingModel();
         try {
@@ -168,6 +174,7 @@ public class ManageBookingController implements Initializable {
 
     }
 
+    //Updates an employees booked seat
     private void updateEmployeeSeating() {
         BookingModel bookingModel1 = new BookingModel();
         UserModel userModel1 = new UserModel();

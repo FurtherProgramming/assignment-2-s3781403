@@ -24,6 +24,8 @@ public class SceneController {
         Main.getStage().show();
     }
 
+    //TODO code the design better/implement fxml file
+    //Draws an alert box
     public static class AlertBox {
 
         public static boolean answer;

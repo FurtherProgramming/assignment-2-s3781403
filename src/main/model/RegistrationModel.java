@@ -26,6 +26,7 @@ public class RegistrationModel {
         }
     }
 
+    //Adds an employee
     public Boolean registration(int employeeID, String firstName, String lastName, String username, String password, String role, String secQuestion, String secAnswer) throws SQLException {
         PreparedStatement preparedStatement = null;
         String query = "INSERT INTO Employees(id, firstname, surname, username, password, role, secretquestion, secretquestionanswer) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";

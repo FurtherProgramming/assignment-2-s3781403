@@ -37,12 +37,11 @@ public class BookingThreeController implements Initializable {
     }
 
     //Creates booking using gathered information
-
     public void createBooking(ActionEvent actionEvent) throws SQLException, IOException {
-        System.out.println("----------------------\n Booking added \n User: " + Main.getCurrentUser()
-                + "\n Seat: " + BookingTwoController.getSeatNum()
-                + "\n Date: " + BookingController.getTempBookingDateString()
-                +"\n----------------------\n");
+//        System.out.println("----------------------\n Booking added \n User: " + Main.getCurrentUser()
+//                + "\n Seat: " + BookingTwoController.getSeatNum()
+//                + "\n Date: " + BookingController.getTempBookingDateString()
+//                +"\n----------------------\n");
         UserModel userModel1 = new UserModel();
 
         bookingModel.addBooking(employeeID, bookedSeat, bookedDate, "booked");

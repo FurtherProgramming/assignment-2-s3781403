@@ -39,6 +39,7 @@ public class AdminBookingManagementController implements Initializable {
         btnNextEmpl.setOnAction((ActionEvent e) -> getBookingInformation());
     }
 
+    //Gets the booking information for the next day.
     private void getBookingInformation() {
         AdminBookingModel adminBookingModel = new AdminBookingModel();
         String dateToCheck = getNextDay();
@@ -71,6 +72,7 @@ public class AdminBookingManagementController implements Initializable {
         lblEmplName.setText(findEmployeeName());
     }
 
+    //Gets the employees name to be placed into
     private String findEmployeeName() {
         UserModel userModel = new UserModel();
         String employeeName = null;
@@ -82,12 +84,14 @@ public class AdminBookingManagementController implements Initializable {
         return employeeName;
     }
 
+    //Method to find what tomorrow is
     private String getNextDay() {
         LocalDate currentDay = LocalDate.now();
         String tomorrow = (currentDay.plusDays(1)).format(DateTimeFormatter.ISO_DATE);
         return tomorrow;
     }
 
+    //Confirms a staff members booking
     private void confirmStaffBooking() {
         AdminBookingModel adminBookingModel = new AdminBookingModel();
         try {
@@ -101,6 +105,7 @@ public class AdminBookingManagementController implements Initializable {
         }
     }
 
+    //Deletes a booking for a staff member
     private void rejectStaffBooking() {
         AdminBookingModel adminBookingModel = new AdminBookingModel();
         SceneController.AlertBox.draw("Delete Booking", "Really delete booking?");
