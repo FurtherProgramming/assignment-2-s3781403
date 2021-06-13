@@ -61,7 +61,6 @@ public class AdminRegisterController extends RegistrationController implements I
     private void beginRegistration() {
         RegistrationModel registrationModel = new RegistrationModel();
         if (checkInputs()) {
-            System.out.println("received inputs");
             try {
                 if (registrationModel.registration(Integer.parseInt(txtFieldArubID.getText()), txtFieldFirstName.getText(), txtFieldLastName.getText(), txtFieldUser.getText(), passFieldPassOne.getText(), selectedRole, txtFieldSecQuestion.getText(), txtFieldSecAnswer.getText())) {
                     generateWarning("New " + selectedRole + " created", "-fx-text-fill: green");

@@ -42,10 +42,12 @@ public class AdminBookingManagementController implements Initializable {
     private void getBookingInformation() {
         AdminBookingModel adminBookingModel = new AdminBookingModel();
         String dateToCheck = getNextDay();
+        btnConfirm.setDisable(false);
+        btnNextEmpl.setDisable(true);
         try {
             bookingInformation = adminBookingModel.getBookingInformation(dateToCheck);
             if (bookingInformation.containsKey("empty")) {
-                generateAlert("There are no more bookings", "-fx-text-fill: red");
+                generateAlert("There are no more bookings for tomorrow", "-fx-text-fill: red");
                 disableButtons();
                 clearLabels();
             } else {
@@ -91,6 +93,8 @@ public class AdminBookingManagementController implements Initializable {
         try {
             adminBookingModel.updateBookingStatus("confirmed", (int) bookingInformation.get("employeeID"), bookingInformation.get("bookingDate").toString());
             generateAlert("Employee booking confirmed", "-fx-text-fill: green");
+            btnConfirm.setDisable(true);
+            btnNextEmpl.setDisable(false);
         } catch (SQLException e) {
             generateAlert("Confirmation unsuccessful", "-fx-text-fill: red");
             e.printStackTrace();

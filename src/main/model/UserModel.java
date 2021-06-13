@@ -55,7 +55,7 @@ public class UserModel {
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String query = "SELECT * FROM Employees WHERE username = ?";
+        String query = "SELECT role FROM Employees WHERE username = ?";
 
         try {
             preparedStatement = connection.prepareStatement(query);
@@ -70,9 +70,9 @@ public class UserModel {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
-            resultSet.close();
             preparedStatement.close();
             connection.close();
+            resultSet.close();
         }
         return role;
     }
@@ -173,6 +173,10 @@ public class UserModel {
         } catch (SQLException e) {
             System.out.println("getEmployeeNameByID(): " + e.getMessage());
             e.printStackTrace();
+        } finally {
+            connection.close();
+            resultSet.close();
+            preparedStatement.close();
         }
         return (firstName + " " + lastName);
 
