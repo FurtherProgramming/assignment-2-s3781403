@@ -36,7 +36,7 @@
             <font>
                 <Font name="System Font" size="13.0" />
             </font></Button>
-        <Hyperlink layoutX="95.0" layoutY="115.0" text="Forgot Password?" underline="true" />
+        <Hyperlink fx:id="linkForgotPass" layoutX="95.0" layoutY="115.0" text="Forgot Password?" underline="true" />
         <Text layoutX="116.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arub Login">
             <font>
                 <Font size="14.0" />

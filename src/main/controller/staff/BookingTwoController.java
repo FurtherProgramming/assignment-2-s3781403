@@ -42,6 +42,7 @@ public class BookingTwoController implements Initializable {
         return seatNum;
     }
 
+
     public static void removeSeatNum() {
         seatNum=null;
     }
@@ -113,7 +114,6 @@ public class BookingTwoController implements Initializable {
         } else {
             warnings.setVisible(true);
         }
-
     }
 
     //"cancel" - clears booking page 1's temp value.

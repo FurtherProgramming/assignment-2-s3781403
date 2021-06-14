@@ -57,6 +57,8 @@ public class AdminLockdownController implements Initializable {
         btnOptionTwo.setOnAction((ActionEvent e) -> setVisible(optionTwo));
         btnConfirmTwo.setOnAction((ActionEvent e) -> lockdownOptionTwo());
         btnReturnHome.setOnAction((ActionEvent e) -> redirect("ui/admin/admin_landingpage.fxml"));
+
+        
     }
 
     //Creates actions for the menu in option 2 on UI page.

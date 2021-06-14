@@ -3,6 +3,7 @@ package main.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import main.Main;
@@ -24,7 +25,8 @@ public class LoginController implements Initializable {
     private TextField txtUsername;
     @FXML
     private TextField txtPassword;
-
+    @FXML
+    private Hyperlink linkForgotPass;
 
     // Check database connection
     @Override
@@ -35,11 +37,20 @@ public class LoginController implements Initializable {
             isConnected.setText("Not Connected");
         }
 
+        linkForgotPass.setOnAction((ActionEvent e) -> {
+            try {
+                SceneController.drawScene("ui/staff/resetpasswordform.fxml");
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
+
     }
 
     /* login Action method
        check if user input is the same as database.
      */
+    //Also means that there is no login after registration
     //TODO Need a way to check user login before closing connection in model. (otherwise no multiple tries).
     public void Login(ActionEvent event) {
 
